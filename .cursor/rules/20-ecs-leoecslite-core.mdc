@@ -1,0 +1,22 @@
+---
+description: "LeoEcsLite core patterns: worlds, pools, filters, events, disposal."
+globs: ["Assets/**/Gameplay/**/*.cs", "Assets/**/ECS/**/*.cs", "Assets/**/Systems/**/*.cs"]
+---
+
+# LeoEcsLite Core Patterns (FOLLOW)
+
+## Pools & Filters
+- Cache pools and filters in `Init(IEcsSystems systems)`.
+- Do not call `world.GetPool<T>()` repeatedly inside loops.
+- Prefer a single filter iteration per system and avoid nested entity scans unless necessary.
+
+## Event pattern
+- Events are represented as **event entities** or event components per project convention.
+- If an event is “one-tick”, ensure it gets cleaned up by the existing event cleanup mechanism (or add one).
+
+## Cross-entity references
+- Use `EcsPackedEntity` (or project’s preferred packed handle) for entity references stored in components.
+- Always validate packed entity before use (unpack check) in runtime systems.
+
+## Disposal
+- If a system allocates native/unmanaged resources or owns disposables, implement `IDisposable` and ensure GameBootstrap collects it (matches current pattern).

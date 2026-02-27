@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c0553d396e19047adabd9454e29ca7, type: 3}
+  m_Name: RopeColorOffsetConfig
+  m_EditorClassIdentifier: 
+  _entries:
+  - Color: 1
+    RopeColorOffset: 5
+  - Color: 2
+    RopeColorOffset: 15
+  - Color: 4
+    RopeColorOffset: 25
+  - Color: 8
+    RopeColorOffset: 35
+  - Color: 16
+    RopeColorOffset: 45
+  - Color: 32
+    RopeColorOffset: 60
+  - Color: 64
+    RopeColorOffset: 75
+  - Color: 128
+    RopeColorOffset: 84

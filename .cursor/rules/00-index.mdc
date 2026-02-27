@@ -1,0 +1,74 @@
+---
+alwaysApply: true
+description: "Project-wide rules for Unity + LeoEcsLite + Zenject (combat-focused)."
+---
+
+# Project Context (ALWAYS FOLLOW)
+
+## Stack & constraints
+- Unity project using **Leopotam.EcsLite** (ECS), **Zenject** (DI).
+- Gameplay logic must remain **data-oriented**: components are data, systems contain behavior.
+- Avoid introducing new third-party dependencies unless explicitly requested.
+
+## Output discipline
+- Prefer **small, compile-safe steps**. If change is large: propose a plan, then implement step 1–2 only.
+- Never invent APIs/classes that are not present in the repo. If required context is missing, ask for the exact files/paths.
+- When modifying existing code, preserve naming, folder structure, and patterns used in the project.
+
+## Performance rules (Unity + ECS)
+- No LINQ/allocations in hot paths (Run systems).
+- Prefer struct components, cached pools/filters initialized in Init().
+- No per-frame string building/log spam in Release paths.
+- Avoid reflection in runtime gameplay code.
+
+## Determinism & RNG (combat)
+- Random outcomes (crit/dodge/combo/procs) must go through a **single RNG service/pattern** (project-defined), not UnityEngine.Random directly, unless existing code already uses it.
+- Any “chance” checks must be auditable (loggable in debug builds) and reproducible when using a seeded RNG.
+
+## System ordering
+- Do not reorder existing systems in GameBootstrap unless the task explicitly requires it.
+- If you add new systems, insert them with a clear reason and document dependencies (what events/components must exist before/after).
+
+## Documentation
+- For any new subsystem (combat/skills/triggers), add a short markdown doc or comment header:
+  - purpose
+  - data contracts (components/events)
+  - system pipeline order
+  - extension points
+
+# Namespace Rules (MUST FOLLOW)
+
+## Primary rule
+- Every new C# file MUST use a namespace from the `PP.BaseProject.App.*` tree.
+- NEVER generate `namespace` based on the physical folder path if it conflicts with project conventions.
+- If ambiguous, choose the closest match from the mapping below and keep it consistent.
+
+## Canonical namespaces (use these exactly)
+- `PP.BaseProject.App.Gameplay`
+- `PP.BaseProject.App.States`
+- `PP.BaseProject.App.Gameplay.ECS.Components`
+- `PP.BaseProject.App.Gameplay.ECS.Systems`
+- `PP.BaseProject.App.Gameplay.ECS.Systems.Events`
+- `PP.BaseProject.App.Gameplay.ECS.Systems.Triggers`
+- `PP.BaseProject.App.Gameplay.ECS.Model`
+- `PP.BaseProject.App.Gameplay.ECS.Utils`
+
+## Type-to-namespace mapping (MUST, most-specific wins)
+- Apply the first matching rule from top to bottom.
+
+- Suffix mapping:
+  - `*TriggerSystem` => `PP.BaseProject.App.Gameplay.ECS.Systems.Triggers`
+  - `*EventSystem` => `PP.BaseProject.App.Gameplay.ECS.Systems.Events`
+  - `*System` => `PP.BaseProject.App.Gameplay.ECS.Systems`
+  - `*Component` => `PP.BaseProject.App.Gameplay.ECS.Components`
+  - `*Tag` => `PP.BaseProject.App.Gameplay.ECS.Components`
+  - `*State` => `PP.BaseProject.App.States`
+
+## ECS event components
+- ECS event marker components/entities MUST be placed in `PP.BaseProject.App.Gameplay.ECS.Components`
+  (optionally `...ECS.Components.Events` if such namespace exists in the project).
+- The `...ECS.Systems.Events` namespace is reserved for systems that process events.
+
+## Do not do
+- Do not create global namespace.
+- Do not create namespaces outside `PP.BaseProject.App.*`.

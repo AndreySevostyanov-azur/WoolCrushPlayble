@@ -1,0 +1,23 @@
+---
+globs: ["**/*.cs"]
+description: "C# / Unity coding standards for this repo."
+---
+
+# C# / Unity Standards
+
+## Style
+- Prefer explicit types in public APIs; `var` allowed for obvious RHS.
+- Use clear names with suffixes:
+  - `*System` for ECS systems
+  - `*Component` for components
+  - `*Tag` for tag components
+  - `*Event` for event components/entities
+- Keep methods short; extract helpers when logic exceeds ~40–60 lines.
+
+## Unity specifics
+- Avoid using `MonoBehaviour.Update()` for gameplay logic; prefer ECS systems.
+- If you must interact with Unity objects, do it via dedicated bridge/services (already present in repo patterns).
+
+## Error handling
+- Fail fast in init/config validation (throw with clear message) but avoid exceptions in hot `Run()` loops.
+- Validate config presence once, cache references, avoid repeated provider calls each tick.
