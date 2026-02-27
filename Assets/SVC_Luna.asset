@@ -693,7 +693,7 @@ MonoBehaviour:
     subShaderIndex: 0
     upToDate: 1
     keywords: []
-  version: 912
+  version: 915
   _shaderParsedShaders:
   - ParsedSubShaders:
     - Index: 0
