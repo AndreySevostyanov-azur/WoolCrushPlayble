@@ -719,7 +719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8517899880296950437, guid: 2f6174220aaa50f469d376d912acfd9e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.58
+      value: -5.05
       objectReference: {fileID: 0}
     - target: {fileID: 8517899880296950437, guid: 2f6174220aaa50f469d376d912acfd9e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -727,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8517899880296950437, guid: 2f6174220aaa50f469d376d912acfd9e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.39
+      value: 7.71
       objectReference: {fileID: 0}
     - target: {fileID: 8517899880296950437, guid: 2f6174220aaa50f469d376d912acfd9e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -915,11 +915,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.size
-      value: 22
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[0].tangent.x
-      value: 0.011296272
+      value: -2.0976763
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[0].tangent.y
@@ -927,55 +927,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[0].tangent.z
-      value: -2.3762302
+      value: -1.8288593
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[1].tangent.x
-      value: 0.0015058517
+      value: 0.015763283
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[1].tangent.y
-      value: 0.00000036879948
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[1].tangent.z
-      value: -0.85265636
+      value: -2.1140618
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[2].tangent.x
-      value: -0.4371786
+      value: 0.8089652
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[2].tangent.y
-      value: 0.0000006276247
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[2].tangent.z
-      value: 0.007027149
+      value: -2.0835452
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[3].tangent.x
-      value: -0.45717335
+      value: -1.2254112
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[3].tangent.y
-      value: 0.0000024371825
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[3].tangent.z
-      value: 0.0027394295
+      value: 0.012971401
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[4].tangent.x
-      value: -0.000084877014
+      value: -0.009949684
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[4].tangent.y
-      value: 0.0000008240269
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[4].tangent.z
-      value: -0.5852642
+      value: 1.1720147
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[5].tangent.x
@@ -983,83 +983,83 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[5].tangent.y
-      value: 0.0000012533869
+      value: 0.00000084218584
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[5].tangent.z
-      value: -1.4260252
+      value: 0.7848036
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[6].tangent.x
-      value: -0.010839462
+      value: -0.40625668
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[6].tangent.y
-      value: 0.00000044160757
+      value: 0.0000017631874
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[6].tangent.z
-      value: -3.9489365
+      value: 0.20868707
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[7].tangent.x
-      value: 2.1531267
+      value: -0.38182163
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[7].tangent.y
-      value: 0
+      value: 0.0000031082957
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[7].tangent.z
-      value: 0.103065014
+      value: -0.334625
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[8].tangent.x
-      value: 0.42646527
+      value: 0.26961803
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[8].tangent.y
-      value: 0.00000076817844
+      value: 0.000005090488
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[8].tangent.z
-      value: 0.35889673
+      value: -0.53116107
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[9].tangent.x
-      value: 0.24264431
+      value: -0.028578281
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[9].tangent.y
-      value: 0.00000046492224
+      value: 0.000006143312
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[9].tangent.z
-      value: -0.8127241
+      value: -1.6280367
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[0].position.x
-      value: -6.552591
+      value: 2.2716513
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[0].position.y
-      value: 0
+      value: 0.0000007616285
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[0].position.z
-      value: 10.741646
+      value: 8.481254
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[10].tangent.x
-      value: 0.26800632
+      value: -1.3944607
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[10].tangent.y
-      value: 0.00000019470147
+      value: 0.000007138904
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[10].tangent.z
-      value: 0.012253761
+      value: -1.5997882
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[11].tangent.x
@@ -1171,15 +1171,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[1].position.x
-      value: -6.518314
+      value: -3.1209452
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[1].position.y
-      value: 0
+      value: 0.00000040548235
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[1].position.z
-      value: 5.421323
+      value: 0.412132
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[20].tangent.x
@@ -1199,111 +1199,111 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[2].position.x
-      value: -7.054429
+      value: -1.5411873
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[2].position.y
-      value: 0
+      value: 0.00000062418314
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[2].position.z
-      value: 4.3558035
+      value: -4.587912
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[3].position.x
-      value: -7.9648314
+      value: -3.3372285
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[3].position.y
-      value: 0.00000032457694
+      value: 0.00000030822034
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[3].position.z
-      value: 4.355803
+      value: -7.552617
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[4].position.x
-      value: -8.496666
+      value: -5.3078904
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[4].position.y
-      value: 0
+      value: 0.000000035477456
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[4].position.z
-      value: 3.490158
+      value: -5.772571
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[5].position.x
-      value: -8.496666
+      value: -5.30789
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[5].position.y
-      value: 0.0000010947563
+      value: -0.00000024089059
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[5].position.z
-      value: 1.8618803
+      value: 2.0360138
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[6].position.x
-      value: -12.007212
+      value: -6.121548
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[6].position.y
-      value: 0.00000073257524
+      value: 0.0000023443063
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[6].position.z
-      value: -2.9949093
+      value: 3.4112206
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[7].position.x
-      value: -7.362976
+      value: -8.863043
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[7].position.y
-      value: 0.0000007053945
+      value: 0.0000037178
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[7].position.z
-      value: -7.5681276
+      value: 3.302297
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[8].position.x
-      value: -3.864422
+      value: -9.229084
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[8].position.y
-      value: 0.00000048459617
+      value: 0.0000073840847
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[8].position.z
-      value: -6.256327
+      value: 1.8727108
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[9].position.x
-      value: -2.7221987
+      value: -7.6453934
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[9].position.y
-      value: 0.0000005104114
+      value: 0.000013075801
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[9].position.z
-      value: -6.565067
+      value: -2.4680402
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[10].position.x
-      value: -2.0138683
+      value: -9.563894
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[10].position.y
-      value: 0.00000034504563
+      value: 0.000019957797
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[10].position.z
-      value: -7.744628
+      value: -6.511127
       objectReference: {fileID: 0}
     - target: {fileID: 4218277215628848361, guid: 2e699617314042d4287855685effa172, type: 3}
       propertyPath: m_Waypoints.Array.data[11].position.x
