@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DragonVariableAccelerationSettings
   m_EditorClassIdentifier: 
   _accelerationUntilDistance: 30
-  _accelerationMultiplier: 10
+  _accelerationMultiplier: 5
   _decelerationRemainingDistance: 10
   _decelerationMultiplier: 0.3
   _endStopDistance: 1
