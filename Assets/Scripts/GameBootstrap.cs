@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using AzurGames.Wool.Gameplay;
 using Cinemachine;
+using Gameplay;
 using Leopotam.EcsLite;
 using Playeble.Scripts.Gameplay;
 using Playeble.Scripts.Gameplay.Dragon;
@@ -21,7 +23,7 @@ namespace Playeble.Scripts
         private CinemachinePath _dragonPath;
 
         [SerializeField] private Transform _dragonRoot;
-        [SerializeField] private GameObject _dragonHeadPrefab;
+        [SerializeField] private DragonHeadView _dragonHeadPrefab;
         [SerializeField] private GameObject _dragonBodyPrefab;
         [SerializeField] private GameObject _dragonTailPrefab;
         [Min(0)] [SerializeField] private int _dragonBodySegmentsCount = 10;
@@ -29,6 +31,7 @@ namespace Playeble.Scripts
         [Min(0f)] [SerializeField] private float _dragonHeadSpeed = 2f;
         [Min(0f)] [SerializeField] private float _dragonInitialHeadDistance = 0f;
         [SerializeField] private VariableAccelerationSettings _dragonVariableAccelerationSettings;
+        [SerializeField] private DragonBreathConfig _dragonBreathConfig;
 
         [Header("Dragon spawn")] [SerializeField]
         private bool _spawnProgressively = true;
@@ -118,6 +121,7 @@ namespace Playeble.Scripts
             BindSystem<StartBlockMoveOnClickSystem>(BindType.Game);
             BindSystem<BlockPathMoveSystem>(BindType.Game);
             BindSystem<AssignReelToFirstEmptySlotSystem>(BindType.Game);
+            BindSystem<DragonAnimationSystem>(BindType.Game);
             BindSystem<ReelWindSystem>(BindType.Game);
             BindSystem<ReelSlotSyncViewSystem>(BindType.Game);
             BindSystem<BlockClickEventCleanupSystem>(BindType.Game);
@@ -246,7 +250,8 @@ namespace Playeble.Scripts
                 _windSecondsPerScale,
                 _dragonRebukeDuration,
                 _dragonVariableAccelerationSettings,
-                _blockMoveSpeed);
+                _blockMoveSpeed,
+                _dragonBreathConfig);
 
             var configGame = new EcsWorld.Config
             {

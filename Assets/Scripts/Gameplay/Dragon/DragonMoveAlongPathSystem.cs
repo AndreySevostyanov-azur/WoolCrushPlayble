@@ -144,7 +144,7 @@ namespace Playeble.Scripts.Gameplay.Dragon
                     headMove.Distance = 0f;
                 }
 
-                var length = path.PathLength;
+                var length = path.PathLength - 1f;
                 if (headMove.Distance >= length)
                 {
                     headMove.Distance = length;

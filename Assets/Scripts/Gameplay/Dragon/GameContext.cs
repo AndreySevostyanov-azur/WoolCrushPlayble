@@ -1,5 +1,6 @@
 using Cinemachine;
 using AzurGames.Wool.Gameplay;
+using Gameplay;
 using UnityEngine;
 using Playeble.Scripts.Gameplay;
 
@@ -10,7 +11,7 @@ namespace Playeble.Scripts.Gameplay.Dragon
         public CinemachinePath DragonPath { get; }
         public Transform DragonRoot { get; }
 
-        public GameObject DragonHeadPrefab { get; }
+        public DragonHeadView DragonHeadPrefab { get; }
         public GameObject DragonBodyPrefab { get; }
         public GameObject DragonTailPrefab { get; }
 
@@ -28,12 +29,13 @@ namespace Playeble.Scripts.Gameplay.Dragon
         public float WindSecondsPerScale { get; }
         public float DragonRebukeDuration { get; }
         public VariableAccelerationSettings DragonVariableAccelerationSettings { get; }
+        public DragonBreathConfig DragonBreathConfig { get; }
         public float BlockMoveSpeed { get; }
 
         public GameContext(
             CinemachinePath dragonPath,
             Transform dragonRoot,
-            GameObject dragonHeadPrefab,
+            DragonHeadView dragonHeadPrefab,
             GameObject dragonBodyPrefab,
             GameObject dragonTailPrefab,
             int dragonBodySegmentsCount,
@@ -48,8 +50,10 @@ namespace Playeble.Scripts.Gameplay.Dragon
             float windSecondsPerScale,
             float dragonRebukeDuration,
             VariableAccelerationSettings dragonVariableAccelerationSettings,
-            float blockMoveSpeed)
+            float blockMoveSpeed,
+            DragonBreathConfig dragonBreathConfig)
         {
+            DragonBreathConfig = dragonBreathConfig;
             DragonPath = dragonPath;
             DragonRoot = dragonRoot;
             DragonHeadPrefab = dragonHeadPrefab;
@@ -81,4 +85,3 @@ namespace Playeble.Scripts.Gameplay.Dragon
         }
     }
 }
-

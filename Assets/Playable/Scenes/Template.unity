@@ -1530,7 +1530,7 @@ MonoBehaviour:
   _showBootOverlay: 1
   _dragonPath: {fileID: 934411083}
   _dragonRoot: {fileID: 0}
-  _dragonHeadPrefab: {fileID: 4949225299756680592, guid: 5a03fe6382f4d1b439e4dbcce77435a5, type: 3}
+  _dragonHeadPrefab: {fileID: 3175775998699290762, guid: 5a03fe6382f4d1b439e4dbcce77435a5, type: 3}
   _dragonBodyPrefab: {fileID: 7670351447450139948, guid: 63eac03267c1bef43ac5e6b21ad5c454, type: 3}
   _dragonTailPrefab: {fileID: 2264517563312116708, guid: 9bb1e531a8b87934eac580854514e8f6, type: 3}
   _dragonBodySegmentsCount: 10
@@ -1538,6 +1538,7 @@ MonoBehaviour:
   _dragonHeadSpeed: 2
   _dragonInitialHeadDistance: 0
   _dragonVariableAccelerationSettings: {fileID: 11400000, guid: 575c0510414c60745b8e242b4986626d, type: 2}
+  _dragonBreathConfig: {fileID: 11400000, guid: 59df350f329f97c4d9c7fd021fc222d9, type: 2}
   _spawnProgressively: 1
   _dragonScaleColors:
   - Type: 1

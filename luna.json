@@ -3029,10 +3029,6 @@
                 "excluded": true
             },
             {
-                "name": "UnityEngine.AnimatorTransitionInfo",
-                "excluded": true
-            },
-            {
                 "name": "UnityEngine.Assertions.Assert",
                 "excluded": true
             },
@@ -3402,10 +3398,6 @@
             },
             {
                 "name": "UnityEngine.Audio.AudioMixer",
-                "excluded": true
-            },
-            {
-                "name": "UnityEngine.AnimatorTransitionInfo.NoTransitionInfo",
                 "excluded": true
             },
             {
@@ -8985,10 +8977,6 @@
                 "excluded": true
             },
             {
-                "name": "Leopotam.EcsLite.EcsFilter.Enumerator",
-                "excluded": true
-            },
-            {
                 "name": "Leopotam.EcsLite.EcsPackedEntityWithWorld",
                 "excluded": true
             },
@@ -9186,6 +9174,10 @@
             },
             {
                 "name": "AzurGames.Wool.Gameplay.SpoolSpriteData",
+                "excluded": false
+            },
+            {
+                "name": "Playeble.Scripts.Gameplay.Dragon.DragonBreathState",
                 "excluded": false
             }
         ],
@@ -32074,7 +32066,7 @@
                     },
                     {
                         "name": "PullOrphanEvents",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -33854,7 +33846,7 @@
                     },
                     {
                         "name": "OnStateExit",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -33906,7 +33898,7 @@
                     },
                     {
                         "name": "CheckTransitionExitTimeCondition",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -34314,7 +34306,7 @@
                     },
                     {
                         "name": "SetBool$1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetBool",
@@ -41292,7 +41284,7 @@
                     },
                     {
                         "name": "GetEnumerator",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ResizeSparseIndex",
@@ -41316,7 +41308,7 @@
                     },
                     {
                         "name": "Unlock",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -42252,7 +42244,7 @@
                     },
                     {
                         "name": "Get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Has",
@@ -42460,10 +42452,6 @@
                 "className": "Playeble.Scripts.Gameplay.Dragon.DragonSpawnInitSystem",
                 "staticMethods": [],
                 "instanceMethods": [
-                    {
-                        "name": "SetComponent",
-                        "excluded": false
-                    },
                     {
                         "name": "GetTransformSafe",
                         "excluded": false
@@ -43601,6 +43589,212 @@
                     {
                         "name": "Run",
                         "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Gameplay.DragonBreathConfig",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "BreathDuration#get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "BreathInterval#get",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Leopotam.EcsLite.EcsFilter.Enumerator",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Current#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": true
+                    },
+                    {
+                        "name": "MoveNext",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Dispose",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Playeble.Scripts.Gameplay.Dragon.DragonBreathComponent",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Playeble.Scripts.Gameplay.Dragon.DragonHeadComponent",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Playeble.Scripts.Gameplay.Dragon.DragonHeadView",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "DragonHeadAnimator#get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "DragonBreathObject#get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "DragonDeathObject#get",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Playeble.Scripts.Gameplay.Dragon.EcsUtils",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "SetComponent",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Playeble.Scripts.Gameplay.Dragon.DragonAnimationSystem",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Run",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "UnityEngine.AnimatorTransitionInfo",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "FromAlpha#get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ToAlpha#get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Complete#get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Pending#get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "AddTime",
+                        "excluded": false
+                    },
+                    {
+                        "name": "IsName",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "UnityEngine.AnimatorTransitionInfo.NoTransitionInfo",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "IsName",
+                        "excluded": true
                     }
                 ]
             }

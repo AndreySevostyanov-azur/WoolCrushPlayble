@@ -26,19 +26,19 @@ namespace Playeble.Scripts.Gameplay.Dragon
 
         public void Run(IEcsSystems systems)
         {
-            _events.Clear();
-            var entities = _eventFilter.GetRawEntities();
-            var count = _eventFilter.GetEntitiesCount();
-            for (var i = 0; i < count; i++)
-            {
-                var e = entities[i];
-                _events.Add(e);
-            }
-
-            for (var i = 0; i < _events.Count; i++)
-            {
-                _world.DelEntity(_events[i]);
-            }
+            // _events.Clear();
+            // var entities = _eventFilter.GetRawEntities();
+            // var count = _eventFilter.GetEntitiesCount();
+            // for (var i = 0; i < count; i++)
+            // {
+            //     var e = entities[i];
+            //     _events.Add(e);
+            // }
+            //
+            // for (var i = 0; i < _events.Count; i++)
+            // {
+            //     _world.DelEntity(_events[i]);
+            // }
         }
     }
 }

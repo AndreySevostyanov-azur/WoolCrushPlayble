@@ -4,16 +4,9 @@ using UnityEngine;
 
 namespace Playeble.Scripts.Gameplay.Dragon
 {
-    public sealed class DragonSpawnInitSystem : IEcsInitSystem
+    public sealed class EcsUtils
     {
-        private readonly GameContext _ctx;
-
-        public DragonSpawnInitSystem(GameContext ctx)
-        {
-            _ctx = ctx;
-        }
-
-        private static void SetComponent<T>(EcsPool<T> pool, int entity, T value) where T : struct
+        public static void SetComponent<T>(EcsPool<T> pool, int entity, T value) where T : struct
         {
             var sparse = pool.GetRawSparseItems();
             if (entity < 0 || entity >= sparse.Length)
@@ -30,8 +23,18 @@ namespace Playeble.Scripts.Gameplay.Dragon
             var dense = pool.GetRawDenseItems();
             dense[idx] = value;
         }
+    }
 
-        private static Transform GetTransformSafe(GameObject go)
+    public sealed class DragonSpawnInitSystem : IEcsInitSystem
+    {
+        private readonly GameContext _ctx;
+
+        public DragonSpawnInitSystem(GameContext ctx)
+        {
+            _ctx = ctx;
+        }
+
+        private static Transform GetTransformSafe(MonoBehaviour go)
         {
             if (go == null) { return null; }
 
@@ -42,12 +45,12 @@ namespace Playeble.Scripts.Gameplay.Dragon
             return go.transform;
         }
 
-        private static GameObject InstantiateSafe(GameObject prefab, Transform parent)
+        private static T InstantiateSafe<T>(T prefab, Transform parent) where T : MonoBehaviour
         {
             if (prefab == null) { return null; }
 
             // Web/JS pipelines can be picky about Instantiate overloads.
-            GameObject go = null;
+            T go = null;
 
             try
             {
@@ -124,6 +127,7 @@ namespace Playeble.Scripts.Gameplay.Dragon
             var pathPool = world.GetPool<SplinePathRef>();
             var headMovePool = world.GetPool<DragonHeadMove>();
             var progressPool = world.GetPool<DragonSpawnProgress>();
+            var headComponentsPool = world.GetPool<DragonHeadComponent>();
 
             var parent = _ctx.DragonRoot;
 
@@ -140,6 +144,7 @@ namespace Playeble.Scripts.Gameplay.Dragon
             pathPool.Add(headEntity);
             headMovePool.Add(headEntity);
             progressPool.Add(headEntity);
+            headComponentsPool.Add(headEntity);
 
             var headTransformValue = GetTransformSafe(headGo);
             if (headTransformValue == null)
@@ -149,11 +154,17 @@ namespace Playeble.Scripts.Gameplay.Dragon
                 return;
             }
 
-            SetComponent(transformPool, headEntity, new TransformRef { Value = headTransformValue });
-            SetComponent(partPool, headEntity, new DragonPart { Kind = DragonPartKind.Head, Index = 0 });
-            SetComponent(pathPool, headEntity, new SplinePathRef { Path = _ctx.DragonPath });
+            EcsUtils.SetComponent(headComponentsPool, headEntity, new DragonHeadComponent
+            {
+                DragonDeathEffect = headGo.DragonDeathObject,
+                DragonFireEffect = headGo.DragonBreathObject,
+                DragonHeadAnimator = headGo.DragonHeadAnimator,
+            });
+            EcsUtils.SetComponent(transformPool, headEntity, new TransformRef { Value = headTransformValue });
+            EcsUtils.SetComponent(partPool, headEntity, new DragonPart { Kind = DragonPartKind.Head, Index = 0 });
+            EcsUtils.SetComponent(pathPool, headEntity, new SplinePathRef { Path = _ctx.DragonPath });
 
-            SetComponent(headMovePool, headEntity, new DragonHeadMove
+            EcsUtils.SetComponent(headMovePool, headEntity, new DragonHeadMove
             {
                 Distance = _ctx.DragonInitialHeadDistance,
                 BaseSpeed = _ctx.DragonHeadSpeed,
@@ -162,7 +173,7 @@ namespace Playeble.Scripts.Gameplay.Dragon
             });
 
             // Head exists, body/tail will be spawned progressively by DragonGrowSpawnSystem.
-            SetComponent(progressPool, headEntity, new DragonSpawnProgress
+            EcsUtils.SetComponent(progressPool, headEntity, new DragonSpawnProgress
             {
                 BodySpawned = 0,
                 TailSpawned = false,

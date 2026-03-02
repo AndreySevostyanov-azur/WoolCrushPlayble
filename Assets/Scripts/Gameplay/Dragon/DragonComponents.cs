@@ -36,6 +36,13 @@ namespace Playeble.Scripts.Gameplay.Dragon
         public bool ReachedEndRaised;
     }
 
+    public struct DragonHeadComponent
+    {
+        public Animator DragonHeadAnimator;
+        public GameObject DragonFireEffect;
+        public GameObject DragonDeathEffect;
+    }
+    
     public struct DragonFollowHead
     {
         public EcsPackedEntity Head;
