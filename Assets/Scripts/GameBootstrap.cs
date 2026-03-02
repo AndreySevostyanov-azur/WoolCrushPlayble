@@ -28,6 +28,7 @@ namespace Playeble.Scripts
         [Min(0f)] [SerializeField] private float _dragonSegmentSpacing = 0.5f;
         [Min(0f)] [SerializeField] private float _dragonHeadSpeed = 2f;
         [Min(0f)] [SerializeField] private float _dragonInitialHeadDistance = 0f;
+        [SerializeField] private VariableAccelerationSettings _dragonVariableAccelerationSettings;
 
         [Header("Dragon spawn")] [SerializeField]
         private bool _spawnProgressively = true;
@@ -109,6 +110,7 @@ namespace Playeble.Scripts
             BindSystem<Playeble.Scripts.Gameplay.Dragon.DragonSpawnInitSystem>(BindType.Game);
             BindSystem<ComputeGameBordersInitSystem>(BindType.Game);
             BindSystem<BlocksInitSystem>(BindType.Game);
+            BindSystem<Playeble.Scripts.Gameplay.Dragon.DragonVariableAccelerationSystem>(BindType.Game);
             BindSystem<Playeble.Scripts.Gameplay.Dragon.DragonMoveAlongPathSystem>(BindType.Game);
             BindSystem<Playeble.Scripts.Gameplay.Dragon.DragonGrowSpawnSystem>(BindType.Game);
             BindSystem<Playeble.Scripts.Gameplay.Dragon.DragonEventCleanupSystem>(BindType.Game);
@@ -243,6 +245,7 @@ namespace Playeble.Scripts
                 _spoolSpriteConfig,
                 _windSecondsPerScale,
                 _dragonRebukeDuration,
+                _dragonVariableAccelerationSettings,
                 _blockMoveSpeed);
 
             var configGame = new EcsWorld.Config

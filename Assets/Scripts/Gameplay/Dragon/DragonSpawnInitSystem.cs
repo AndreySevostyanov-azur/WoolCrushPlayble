@@ -156,6 +156,7 @@ namespace Playeble.Scripts.Gameplay.Dragon
             SetComponent(headMovePool, headEntity, new DragonHeadMove
             {
                 Distance = _ctx.DragonInitialHeadDistance,
+                BaseSpeed = _ctx.DragonHeadSpeed,
                 Speed = _ctx.DragonHeadSpeed,
                 ReachedEndRaised = false
             });

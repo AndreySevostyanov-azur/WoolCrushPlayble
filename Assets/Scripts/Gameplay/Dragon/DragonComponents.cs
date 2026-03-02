@@ -31,6 +31,7 @@ namespace Playeble.Scripts.Gameplay.Dragon
     public struct DragonHeadMove
     {
         public float Distance;
+        public float BaseSpeed;
         public float Speed;
         public bool ReachedEndRaised;
     }

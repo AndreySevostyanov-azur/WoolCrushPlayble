@@ -1534,9 +1534,10 @@ MonoBehaviour:
   _dragonBodyPrefab: {fileID: 7670351447450139948, guid: 63eac03267c1bef43ac5e6b21ad5c454, type: 3}
   _dragonTailPrefab: {fileID: 2264517563312116708, guid: 9bb1e531a8b87934eac580854514e8f6, type: 3}
   _dragonBodySegmentsCount: 10
-  _dragonSegmentSpacing: 0.9
+  _dragonSegmentSpacing: 0.8
   _dragonHeadSpeed: 2
   _dragonInitialHeadDistance: 0
+  _dragonVariableAccelerationSettings: {fileID: 11400000, guid: 575c0510414c60745b8e242b4986626d, type: 2}
   _spawnProgressively: 1
   _dragonScaleColors:
   - Type: 1
@@ -1585,7 +1586,7 @@ MonoBehaviour:
   - {fileID: 1847598800}
   _spoolSpriteConfig: {fileID: 11400000, guid: 872599ed1276b6e4b9b33c5623a9a566, type: 2}
   _ropeColorOffsetConfig: {fileID: 11400000, guid: 9559f846709527546ad691e037fb78da, type: 2}
-  _windSecondsPerScale: 0.35
+  _windSecondsPerScale: 0.3
   _dragonRebukeDuration: 0.08
   _blockMoveSpeed: 15
 --- !u!4 &1035242434

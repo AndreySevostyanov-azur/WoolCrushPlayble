@@ -27,6 +27,7 @@ namespace Playeble.Scripts.Gameplay.Dragon
         public SpoolSpriteConfig SpoolSpriteConfig { get; }
         public float WindSecondsPerScale { get; }
         public float DragonRebukeDuration { get; }
+        public VariableAccelerationSettings DragonVariableAccelerationSettings { get; }
         public float BlockMoveSpeed { get; }
 
         public GameContext(
@@ -46,6 +47,7 @@ namespace Playeble.Scripts.Gameplay.Dragon
             SpoolSpriteConfig spoolSpriteConfig,
             float windSecondsPerScale,
             float dragonRebukeDuration,
+            VariableAccelerationSettings dragonVariableAccelerationSettings,
             float blockMoveSpeed)
         {
             DragonPath = dragonPath;
@@ -66,6 +68,7 @@ namespace Playeble.Scripts.Gameplay.Dragon
             SpoolSpriteConfig = spoolSpriteConfig;
             WindSecondsPerScale = windSecondsPerScale;
             DragonRebukeDuration = dragonRebukeDuration;
+            DragonVariableAccelerationSettings = dragonVariableAccelerationSettings;
             BlockMoveSpeed = blockMoveSpeed;
         }
 
