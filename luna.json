@@ -1,7 +1,7 @@
 {
     "version": "7.1.0",
     "projectId": "7e8230cc-65de-4aba-8d6c-64c69b51c8cd",
-    "applicationID": 0,
+    "applicationID": 19676,
     "creativeName": "Name",
     "pgServer": "EU",
     "window": {
@@ -120,7 +120,7 @@
             "externalJSLibraries": [],
             "scriptingDefines": [],
             "msbuildVersion": "17.14",
-            "monoVersion": "8.0.2",
+            "monoVersion": "9.0.13",
             "dotnetVersion": "8.0.206"
         },
         "assets": {
@@ -20690,7 +20690,7 @@
                     },
                     {
                         "name": "OnDidApplyAnimationProperties",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },

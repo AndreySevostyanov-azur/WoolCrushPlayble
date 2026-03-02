@@ -17,11 +17,16 @@ namespace Playeble.Scripts
 {
     public class GameBootstrap : MonoBehaviour
     {
+        [SerializeField] private float _delayBeforePause;
+        [LunaPlaygroundField("Положение пальцы", 1, "СтартовыйЭкран")]
+        [SerializeField] private Vector3 _fingerOffsetPosition;
+        [SerializeField] private Transform _clickHand;
+        
         [SerializeField] private bool _showBootOverlay = true;
-
+        
         [Header("Dragon (LeoECSLite)")] [SerializeField]
         private CinemachinePath _dragonPath;
-
+        
         [SerializeField] private Transform _dragonRoot;
         [SerializeField] private DragonHeadView _dragonHeadPrefab;
         [SerializeField] private GameObject _dragonBodyPrefab;
@@ -63,6 +68,10 @@ namespace Playeble.Scripts
         private IEcsSystems _gameplaySystems;
         private IEcsSystems _collisionSystems;
 
+        private float _time;
+        private bool _alreadyPaused;
+        private Vector3 _fingerStartPosition;
+
         private readonly List<Type> _gameplaySystemsTypes = new List<Type>();
         private readonly List<Type> _collisionSystemsTypes = new List<Type>();
         private readonly HashSet<Type> _boundSystemTypes = new HashSet<Type>();
@@ -74,6 +83,7 @@ namespace Playeble.Scripts
         {
             // MonoBehaviour constructors are not a reliable initialization place (especially for Web/Luna pipelines).
             BindSystems();
+            _fingerStartPosition = _clickHand.position;
         }
 
         private void Start()
@@ -302,6 +312,8 @@ namespace Playeble.Scripts
 
         public void Update()
         {
+            _clickHand.position = _fingerStartPosition + _fingerOffsetPosition;
+            
             if (!IsPaused)
             {
                 if (IsActive)
@@ -309,6 +321,26 @@ namespace Playeble.Scripts
                     _gameplaySystems?.Run();
                     _collisionSystems?.Run();
                 }
+            }
+
+            _time += Time.deltaTime;
+            if (!_alreadyPaused && _time > _delayBeforePause)
+            {
+                IsPaused = true;
+                _clickHand.gameObject.SetActive(true);
+            }
+            
+            if (Input.touchCount > 0)
+            {
+                IsPaused = false;
+                _clickHand.gameObject.SetActive(false);
+                _alreadyPaused = true;
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                IsPaused = false;
+                _clickHand.gameObject.SetActive(false);
+                _alreadyPaused = true;
             }
         }
 
