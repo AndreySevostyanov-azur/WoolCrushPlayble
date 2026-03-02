@@ -1,3 +1,4 @@
+using System;
 using Cinemachine;
 using AzurGames.Wool.Gameplay;
 using Gameplay;
@@ -31,6 +32,8 @@ namespace Playeble.Scripts.Gameplay.Dragon
         public VariableAccelerationSettings DragonVariableAccelerationSettings { get; }
         public DragonBreathConfig DragonBreathConfig { get; }
         public float BlockMoveSpeed { get; }
+
+        public Action GameEnd;
 
         public GameContext(
             CinemachinePath dragonPath,
@@ -76,6 +79,11 @@ namespace Playeble.Scripts.Gameplay.Dragon
             BlockMoveSpeed = blockMoveSpeed;
         }
 
+        public void RiseGameEndAction()
+        {
+            GameEnd?.Invoke();
+        }
+        
         [System.Serializable]
         public struct DragonScaleColorSlot
         {

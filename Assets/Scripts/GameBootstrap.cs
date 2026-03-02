@@ -21,6 +21,7 @@ namespace Playeble.Scripts
         [LunaPlaygroundField("Положение пальцы", 1, "СтартовыйЭкран")]
         [SerializeField] private Vector3 _fingerOffsetPosition;
         [SerializeField] private Transform _clickHand;
+        [SerializeField] private EndScreenView _endScreenView;
         
         [SerializeField] private bool _showBootOverlay = true;
         
@@ -126,6 +127,7 @@ namespace Playeble.Scripts
             BindSystem<Playeble.Scripts.Gameplay.Dragon.DragonVariableAccelerationSystem>(BindType.Game);
             BindSystem<Playeble.Scripts.Gameplay.Dragon.DragonMoveAlongPathSystem>(BindType.Game);
             BindSystem<Playeble.Scripts.Gameplay.Dragon.DragonGrowSpawnSystem>(BindType.Game);
+            BindSystem<Playeble.Scripts.Gameplay.Dragon.DragonGameEndSystem>(BindType.Game);
             BindSystem<Playeble.Scripts.Gameplay.Dragon.DragonEventCleanupSystem>(BindType.Game);
             BindSystem<ReelSlotsInitSystem>(BindType.Game);
             BindSystem<StartBlockMoveOnClickSystem>(BindType.Game);
@@ -263,6 +265,8 @@ namespace Playeble.Scripts
                 _blockMoveSpeed,
                 _dragonBreathConfig);
 
+            _gameContext.GameEnd += GameEnd;
+            
             var configGame = new EcsWorld.Config
             {
                 Entities = 4096,
@@ -344,6 +348,12 @@ namespace Playeble.Scripts
             }
         }
 
+        private void GameEnd()
+        {
+            _endScreenView.gameObject.SetActive(true);
+            IsPaused = true;
+        }
+        
         private void ShowBootOverlay(string message)
         {
             if (_bootOverlay != null)

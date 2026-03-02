@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e6212f4aa92a04418f2cd3aa0612440, type: 3}
   m_Name: DragonVariableAccelerationSettings 1
   m_EditorClassIdentifier: 
-  _accelerationUntilDistance: 16
+  _accelerationUntilDistance: 53.4
   _accelerationMultiplier: 15
   _decelerationRemainingDistance: 5
   _decelerationMultiplier: 0.3
