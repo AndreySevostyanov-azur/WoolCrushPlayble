@@ -677,6 +677,34 @@ MonoBehaviour:
     subShaderIndex: 0
     upToDate: 0
     keywords: []
+  - shaderCompilerPlatform: 5
+    shader: {fileID: 4800000, guid: 2c1f99ea0ed04f1c8f56a2fa4f1b9c31, type: 3}
+    passType: 13
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords: []
+  - shaderCompilerPlatform: 9
+    shader: {fileID: 4800000, guid: 2c1f99ea0ed04f1c8f56a2fa4f1b9c31, type: 3}
+    passType: 13
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords: []
+  - shaderCompilerPlatform: 5
+    shader: {fileID: 4800000, guid: 7f58ab3d6f7c4f4ea35f427a88cc1e0d, type: 3}
+    passType: 13
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords: []
+  - shaderCompilerPlatform: 9
+    shader: {fileID: 4800000, guid: 7f58ab3d6f7c4f4ea35f427a88cc1e0d, type: 3}
+    passType: 13
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords: []
   _includedShaderVariants: []
   _excludedShaderVariants:
   - shaderCompilerPlatform: 5
@@ -693,7 +721,7 @@ MonoBehaviour:
     subShaderIndex: 0
     upToDate: 1
     keywords: []
-  version: 915
+  version: 922
   _shaderParsedShaders:
   - ParsedSubShaders:
     - Index: 0
@@ -2805,7 +2833,7 @@ MonoBehaviour:
       - Key: UniversalMaterialType
         Value: Unlit
     Shader: {fileID: -6465566751694194690, guid: 917aab87f95a90540940bd455f303450, type: 3}
-    ShaderPath: Assets/!Project/Shaders/Sprite_add.shadergraph
+    ShaderPath: Assets/!Project/Shaders/Sprite_add_Luna.shader
     ShaderDefinedKeywords:
     - FOG_EXP
     - FOG_EXP2
@@ -3008,7 +3036,7 @@ MonoBehaviour:
       - Key: UniversalMaterialType
         Value: Unlit
     Shader: {fileID: -6465566751694194690, guid: 5317e9fa121e54b4fbe76da58579ba99, type: 3}
-    ShaderPath: Assets/!Project/Shaders/Sprite_alpha.shadergraph
+    ShaderPath: Assets/!Project/Shaders/Sprite_alpha_Luna.shader
     ShaderDefinedKeywords:
     - FOG_EXP
     - FOG_EXP2

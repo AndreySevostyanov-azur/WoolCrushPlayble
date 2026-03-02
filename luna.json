@@ -43539,6 +43539,70 @@
                         "excluded": false
                     }
                 ]
+            },
+            {
+                "className": "Playeble.Scripts.Gameplay.Dragon.VariableAccelerationSettings",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "AccelerationUntilDistance#get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "AccelerationMultiplier#get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "DecelerationRemainingDistance#get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "DecelerationMultiplier#get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "EndStopDistance#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnValidate",
+                        "excluded": true
+                    },
+                    {
+                        "name": "EvaluateSpeed",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Playeble.Scripts.Gameplay.Dragon.DragonVariableAccelerationSystem",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "GetPathLengthSafe",
+                        "excluded": false
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Run",
+                        "excluded": false
+                    }
+                ]
             }
         ],
         "stubberDataList": [],

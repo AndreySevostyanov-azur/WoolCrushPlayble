@@ -1537,6 +1537,7 @@ MonoBehaviour:
   _dragonSegmentSpacing: 0.9
   _dragonHeadSpeed: 2
   _dragonInitialHeadDistance: 0
+  _dragonVariableAccelerationSettings: {fileID: 11400000, guid: 575c0510414c60745b8e242b4986626d, type: 2}
   _spawnProgressively: 1
   _dragonScaleColors:
   - Type: 1
@@ -2183,6 +2184,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 990406510433497305, guid: 25ebcbacb18d54249bb0f9890c421102, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f2e57dc14d566d74291b4040616b63eb, type: 3}
     - target: {fileID: 1434450614468579272, guid: 25ebcbacb18d54249bb0f9890c421102, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
