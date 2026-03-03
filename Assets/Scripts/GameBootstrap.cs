@@ -71,6 +71,7 @@ namespace Playeble.Scripts
 
         private float _time;
         private bool _alreadyPaused;
+        private bool _gameFinished;
         private Vector3 _fingerStartPosition;
 
         private readonly List<Type> _gameplaySystemsTypes = new List<Type>();
@@ -316,6 +317,9 @@ namespace Playeble.Scripts
 
         public void Update()
         {
+            if(_gameFinished)
+                return;
+            
             _clickHand.position = _fingerStartPosition + _fingerOffsetPosition;
             
             if (!IsPaused)
@@ -352,6 +356,7 @@ namespace Playeble.Scripts
         {
             _endScreenView.gameObject.SetActive(true);
             IsPaused = true;
+            _gameFinished = true;
         }
         
         private void ShowBootOverlay(string message)
