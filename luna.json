@@ -2,7 +2,7 @@
     "version": "7.1.0",
     "projectId": "7e8230cc-65de-4aba-8d6c-64c69b51c8cd",
     "applicationID": 19676,
-    "creativeName": "WoolCrush_playeble_lvl2",
+    "creativeName": "WoolCrush_playeble_lvl1",
     "pgServer": "EU",
     "window": {
         "‐⁙": true
@@ -147,10 +147,10 @@
             ]
         },
         "scenes": [
-            "Assets/Playable/Scenes/Template_2.unity"
+            "Assets/Playable/Scenes/Template.unity"
         ],
         "disabledScenes": [
-            "Assets/Playable/Scenes/Template.unity"
+            "Assets/Playable/Scenes/Template_2.unity"
         ],
         "startupScene": 0,
         "packages": {

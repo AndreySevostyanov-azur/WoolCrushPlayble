@@ -936,11 +936,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6ae5753fcfd774fa7d24d49522715e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &227530481 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2637949634477897975, guid: 4d97126cb109d8f4a96a59f240091080, type: 3}
-  m_PrefabInstance: {fileID: 634860103}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &287783420 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2922511205139616993, guid: 4d97126cb109d8f4a96a59f240091080, type: 3}
@@ -4843,7 +4838,7 @@ MonoBehaviour:
   _delayBeforePause: 1
   _fingerOffsetPosition: {x: 200, y: -100, z: 0}
   _clickHand: {fileID: 459208162}
-  _fingerTargetBlock: {fileID: 227530481}
+  _fingerTargetBlock: {fileID: 105437007}
   _uiCanvas: {fileID: 857251125}
   _worldCamera: {fileID: 1045437035}
   _startScreen: {fileID: 1107416680}
