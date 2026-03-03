@@ -21,8 +21,12 @@ namespace Playeble.Scripts
         [LunaPlaygroundField("Положение пальцы", 1, "СтартовыйЭкран")]
         [SerializeField] private Vector3 _fingerOffsetPosition;
         [SerializeField] private Transform _clickHand;
+        [SerializeField] private Transform _fingerTargetBlock;
+        [SerializeField] private Canvas _uiCanvas;
+        [SerializeField] private Camera _worldCamera;
         [SerializeField] private GameObject _startScreen;
         [SerializeField] private EndScreenView _endScreenView;
+        [SerializeField] private AudioSource _ambient;
         
         [SerializeField] private bool _showBootOverlay = true;
         
@@ -74,6 +78,8 @@ namespace Playeble.Scripts
         private bool _alreadyPaused;
         private bool _gameFinished;
         private Vector3 _fingerStartPosition;
+        private Vector2 _fingerStartAnchoredPosition;
+        private RectTransform _clickHandRect;
 
         private readonly List<Type> _gameplaySystemsTypes = new List<Type>();
         private readonly List<Type> _collisionSystemsTypes = new List<Type>();
@@ -86,7 +92,16 @@ namespace Playeble.Scripts
         {
             // MonoBehaviour constructors are not a reliable initialization place (especially for Web/Luna pipelines).
             BindSystems();
-            _fingerStartPosition = _clickHand.position;
+            _clickHandRect = _clickHand as RectTransform;
+            if (_clickHandRect != null)
+            {
+                _fingerStartAnchoredPosition = _clickHandRect.anchoredPosition;
+            }
+            else if (_clickHand != null)
+            {
+                _fingerStartPosition = _clickHand.position;
+            }
+            _ambient.Stop();
         }
 
         private void Start()
@@ -321,7 +336,7 @@ namespace Playeble.Scripts
             if(_gameFinished)
                 return;
             
-            _clickHand.position = _fingerStartPosition + _fingerOffsetPosition;
+            UpdateFingerPosition();
             
             if (!IsPaused)
             {
@@ -341,12 +356,20 @@ namespace Playeble.Scripts
             
             if (Input.touchCount > 0)
             {
+                if (!_ambient.isPlaying)
+                {
+                    _ambient.Play();
+                }
                 IsPaused = false;
                 _startScreen.gameObject.SetActive(false);
                 _alreadyPaused = true;
             }
             if (Input.GetMouseButtonDown(0))
             {
+                if (!_ambient.isPlaying)
+                {
+                    _ambient.Play();
+                }
                 IsPaused = false;
                 _startScreen.gameObject.SetActive(false);
                 _alreadyPaused = true;
@@ -358,6 +381,54 @@ namespace Playeble.Scripts
             _endScreenView.gameObject.SetActive(true);
             IsPaused = true;
             _gameFinished = true;
+        }
+
+        private void UpdateFingerPosition()
+        {
+            if (_clickHand == null)
+            {
+                return;
+            }
+
+            if (_fingerTargetBlock != null && _uiCanvas != null)
+            {
+                var worldCamera = _worldCamera != null ? _worldCamera : Camera.main;
+                if (worldCamera != null)
+                {
+                    var screenPoint = (Vector2)worldCamera.WorldToScreenPoint(_fingerTargetBlock.position);
+                    var canvasRect = _uiCanvas.transform as RectTransform;
+                    var canvasCamera = _uiCanvas.renderMode == RenderMode.ScreenSpaceOverlay
+                        ? null
+                        : (_uiCanvas.worldCamera != null ? _uiCanvas.worldCamera : worldCamera);
+
+                    if (canvasRect != null &&
+                        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                            canvasRect, screenPoint, canvasCamera, out var localPoint))
+                    {
+                        var offset = new Vector2(_fingerOffsetPosition.x, _fingerOffsetPosition.y);
+                        if (_clickHandRect != null)
+                        {
+                            _clickHandRect.anchoredPosition = localPoint + offset;
+                        }
+                        else
+                        {
+                            _clickHand.position = canvasRect.TransformPoint(localPoint + offset);
+                        }
+
+                        return;
+                    }
+                }
+            }
+
+            var fallbackOffset = new Vector2(_fingerOffsetPosition.x, _fingerOffsetPosition.y);
+            if (_clickHandRect != null)
+            {
+                _clickHandRect.anchoredPosition = _fingerStartAnchoredPosition + fallbackOffset;
+            }
+            else
+            {
+                _clickHand.position = _fingerStartPosition + _fingerOffsetPosition;
+            }
         }
         
         private void ShowBootOverlay(string message)
