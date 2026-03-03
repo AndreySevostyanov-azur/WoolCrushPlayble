@@ -463,8 +463,11 @@ namespace Playeble.Scripts.Gameplay.Movements
             {
                 result.Found = true;
 
-                // Move to the middle of the blocking block (no side offset).
-                result.Point = new Vector3(bestBounds.center.x, startPos.y, bestBounds.center.z);
+                // Move straight forward to the collision point (no diagonal to center).
+                if (!TryGetCollisionPointXZ(startPos, forwardXZ, bestBounds, hasSelfBounds, selfBounds, out result.Point))
+                {
+                    result.Point = new Vector3(bestBounds.center.x, startPos.y, bestBounds.center.z);
+                }
                 return result;
             }
 
@@ -515,6 +518,77 @@ namespace Playeble.Scripts.Gameplay.Movements
             t -= 0.05f;
             if (t < 0f) t = 0f;
             return t;
+        }
+
+        private static bool TryGetCollisionPointXZ(
+            Vector3 startPos,
+            Vector3 directionXZ,
+            Bounds blockerBounds,
+            bool hasSelfBounds,
+            Bounds selfBounds,
+            out Vector3 point)
+        {
+            var dir = new Vector3(directionXZ.x, 0f, directionXZ.z);
+            if (dir.sqrMagnitude < 0.0001f)
+            {
+                dir = Vector3.forward;
+            }
+            dir.Normalize();
+
+            var min = blockerBounds.min;
+            var max = blockerBounds.max;
+
+            if (hasSelfBounds)
+            {
+                var ext = selfBounds.extents;
+                min.x -= ext.x;
+                max.x += ext.x;
+                min.z -= ext.z;
+                max.z += ext.z;
+            }
+
+            var tMin = float.NegativeInfinity;
+            var tMax = float.PositiveInfinity;
+
+            if (Mathf.Abs(dir.x) > 0.0001f)
+            {
+                var tx1 = (min.x - startPos.x) / dir.x;
+                var tx2 = (max.x - startPos.x) / dir.x;
+                var txMin = Mathf.Min(tx1, tx2);
+                var txMax = Mathf.Max(tx1, tx2);
+                tMin = Mathf.Max(tMin, txMin);
+                tMax = Mathf.Min(tMax, txMax);
+            }
+            else if (startPos.x < min.x || startPos.x > max.x)
+            {
+                point = startPos;
+                return false;
+            }
+
+            if (Mathf.Abs(dir.z) > 0.0001f)
+            {
+                var tz1 = (min.z - startPos.z) / dir.z;
+                var tz2 = (max.z - startPos.z) / dir.z;
+                var tzMin = Mathf.Min(tz1, tz2);
+                var tzMax = Mathf.Max(tz1, tz2);
+                tMin = Mathf.Max(tMin, tzMin);
+                tMax = Mathf.Min(tMax, tzMax);
+            }
+            else if (startPos.z < min.z || startPos.z > max.z)
+            {
+                point = startPos;
+                return false;
+            }
+
+            if (tMax < 0f || tMin > tMax)
+            {
+                point = startPos;
+                return false;
+            }
+
+            var t = Mathf.Max(tMin, 0f);
+            point = new Vector3(startPos.x + dir.x * t, startPos.y, startPos.z + dir.z * t);
+            return true;
         }
 
         private static Vector3 GetBoundaryPoint(GameBordersComponent borders, Vector3 origin, Vector3 directionXZ)
