@@ -21,6 +21,7 @@ namespace Playeble.Scripts
         [LunaPlaygroundField("Положение пальцы", 1, "СтартовыйЭкран")]
         [SerializeField] private Vector3 _fingerOffsetPosition;
         [SerializeField] private Transform _clickHand;
+        [SerializeField] private GameObject _startScreen;
         [SerializeField] private EndScreenView _endScreenView;
         
         [SerializeField] private bool _showBootOverlay = true;
@@ -335,19 +336,19 @@ namespace Playeble.Scripts
             if (!_alreadyPaused && _time > _delayBeforePause)
             {
                 IsPaused = true;
-                _clickHand.gameObject.SetActive(true);
+                _startScreen.gameObject.SetActive(true);
             }
             
             if (Input.touchCount > 0)
             {
                 IsPaused = false;
-                _clickHand.gameObject.SetActive(false);
+                _startScreen.gameObject.SetActive(false);
                 _alreadyPaused = true;
             }
             if (Input.GetMouseButtonDown(0))
             {
                 IsPaused = false;
-                _clickHand.gameObject.SetActive(false);
+                _startScreen.gameObject.SetActive(false);
                 _alreadyPaused = true;
             }
         }
