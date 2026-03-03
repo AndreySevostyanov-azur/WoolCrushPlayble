@@ -586,7 +586,9 @@ namespace Playeble.Scripts.Gameplay.Movements
                 return false;
             }
 
-            var t = Mathf.Max(tMin, 0f);
+            const float collisionInset = 1f;
+            var tEntry = Mathf.Max(tMin, 0f);
+            var t = Mathf.Min(tEntry + collisionInset, tMax);
             point = new Vector3(startPos.x + dir.x * t, startPos.y, startPos.z + dir.z * t);
             return true;
         }

@@ -562,7 +562,7 @@
             },
             {
                 "name": "UnityEngine.UI.Button.ButtonClickedEvent",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "UnityEngine.UI.ILayoutController",
@@ -594,7 +594,7 @@
             },
             {
                 "name": "UnityEngine.UI.Navigation.Mode",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "UnityEngine.UI.Scrollbar.Axis",
@@ -626,7 +626,7 @@
             },
             {
                 "name": "UnityEngine.UI.Selectable.Transition",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "UnityEngine.UI.Slider.Axis",
@@ -21016,7 +21016,7 @@
                     },
                     {
                         "name": "defaultColorBlock#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "normalColor#get",
@@ -21044,7 +21044,7 @@
                     },
                     {
                         "name": "colorMultiplier#set",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "fadeDuration#get",
@@ -21052,19 +21052,19 @@
                     },
                     {
                         "name": "fadeDuration#set",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "init",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ctor",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "$clone",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "op_Equality",
@@ -21144,11 +21144,11 @@
                     },
                     {
                         "name": "defaultNavigation#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "getDefaultValue",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "mode#get",
@@ -21156,11 +21156,11 @@
                     },
                     {
                         "name": "ctor",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "$clone",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "mode#set",
@@ -21264,7 +21264,7 @@
                     },
                     {
                         "name": "ctor",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "getDefaultValue",
@@ -25684,11 +25684,11 @@
                     },
                     {
                         "name": "init",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ctor",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnPointerClick",
@@ -25700,7 +25700,7 @@
                     },
                     {
                         "name": "ConfigureForEntity",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "onClick#set",
@@ -41631,6 +41631,10 @@
                     {
                         "name": "ApplyRopeColorOffsetConfig",
                         "excluded": false
+                    },
+                    {
+                        "name": "GameEnd",
+                        "excluded": false
                     }
                 ]
             },
@@ -41885,6 +41889,10 @@
                     {
                         "name": "ctor",
                         "excluded": false
+                    },
+                    {
+                        "name": "RiseGameEndAction",
+                        "excluded": true
                     }
                 ]
             },
@@ -43139,6 +43147,10 @@
                     {
                         "name": "FindFirstEmptySlotEntity",
                         "excluded": false
+                    },
+                    {
+                        "name": "TryGetCollisionPointXZ",
+                        "excluded": false
                     }
                 ]
             },
@@ -43794,6 +43806,54 @@
                 "instanceMethods": [
                     {
                         "name": "IsName",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Gameplay.EndScreenView",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Awake",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GoToStore",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Playeble.Scripts.Gameplay.Dragon.DragonGameEndSystem",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "$ctor1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Run",
+                        "excluded": false
+                    },
+                    {
+                        "name": "HasAllBodyPartsUnwound",
+                        "excluded": false
+                    },
+                    {
+                        "name": "HasSpawnedAllBodyAndTail",
+                        "excluded": false
+                    },
+                    {
+                        "name": "HasAnyBodyPart",
                         "excluded": true
                     }
                 ]
