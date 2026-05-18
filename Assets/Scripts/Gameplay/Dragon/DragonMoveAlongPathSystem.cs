@@ -145,9 +145,25 @@ namespace Playeble.Scripts.Gameplay.Dragon
                 }
 
                 var length = path.PathLength - 1f;
-                if (headMove.Distance >= length)
+
+                // Проигрыш = факт остановки дракона: он доезжает до точки
+                // hard-stop (remaining <= EndStopDistance) и больше не движется.
+                // Завязываемся на тот же параметр остановки, а не на магическую
+                // константу -1f, иначе при большом EndStopDistance дракон
+                // останавливается раньше порога и проигрыш не наступает никогда.
+                var accelSettings = _ctx != null ? _ctx.DragonVariableAccelerationSettings : null;
+                var stopRemaining = accelSettings != null && accelSettings.EndStopDistance > 0f
+                    ? accelSettings.EndStopDistance
+                    : 0f;
+                var endDistance = path.PathLength - stopRemaining;
+                if (endDistance < 0f)
                 {
-                    headMove.Distance = length;
+                    endDistance = 0f;
+                }
+
+                if (headMove.Distance >= endDistance)
+                {
+                    headMove.Distance = endDistance;
                     if (!headMove.ReachedEndRaised)
                     {
                         headMove.ReachedEndRaised = true;

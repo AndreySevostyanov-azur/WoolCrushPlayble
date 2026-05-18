@@ -335,6 +335,13 @@ namespace Playeble.Scripts.Gameplay.ReelSlots
                     }
                 }
 
+                // Чешуйку можно смотать только когда она полностью вошла
+                // в видимую зону по горизонтали (левый и правый края на экране).
+                if (worldCamera != null && !IsHorizontallyVisible(marker.Renderer, worldCamera))
+                {
+                    continue;
+                }
+
                 if (partIndex < bestPartIndex)
                 {
                     bestPartIndex = partIndex;
@@ -370,6 +377,42 @@ namespace Playeble.Scripts.Gameplay.ReelSlots
             }
 
             return bestEntity;
+        }
+
+        private static bool IsHorizontallyVisible(Renderer renderer, Camera cam)
+        {
+            // Нет данных о габаритах/камере -> не блокируем смотку.
+            if (renderer == null || cam == null)
+            {
+                return true;
+            }
+
+            var b = renderer.bounds;
+            var c = b.center;
+            var e = b.extents;
+
+            var minX = float.MaxValue;
+            var maxX = float.MinValue;
+
+            for (var i = 0; i < 8; i++)
+            {
+                var corner = new Vector3(
+                    c.x + ((i & 1) == 0 ? -e.x : e.x),
+                    c.y + ((i & 2) == 0 ? -e.y : e.y),
+                    c.z + ((i & 4) == 0 ? -e.z : e.z));
+
+                var sp = cam.WorldToScreenPoint(corner);
+                if (sp.z < 0f)
+                {
+                    // Угол за камерой — считаем чешуйку ещё не вошедшей в зону.
+                    return false;
+                }
+
+                if (sp.x < minX) minX = sp.x;
+                if (sp.x > maxX) maxX = sp.x;
+            }
+
+            return minX >= 0f && maxX <= Screen.width;
         }
 
         private int GetBodyIndexByEntity(int entity, DragonPart[] partDense, int[] partSparse)

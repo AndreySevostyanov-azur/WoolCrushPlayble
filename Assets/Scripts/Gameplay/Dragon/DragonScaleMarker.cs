@@ -23,6 +23,11 @@ namespace Playeble.Scripts.Gameplay.Dragon
             get { return _isUnwinding; }
         }
 
+        public Renderer Renderer
+        {
+            get { return _renderer; }
+        }
+
         private void Reset()
         {
             AutoBind();

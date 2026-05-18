@@ -158,6 +158,22 @@ namespace Playeble.Scripts
             _windZoneLine.anchoredPosition = new Vector2(0f, 0f);
         }
 
+        private DragonColorBlock ResolveTutorialBlock()
+        {
+            if (_fingerTargetBlock == null)
+            {
+                return null;
+            }
+
+            var block = _fingerTargetBlock.GetComponentInParent<DragonColorBlock>();
+            if (block == null)
+            {
+                block = _fingerTargetBlock.GetComponentInChildren<DragonColorBlock>(true);
+            }
+
+            return block;
+        }
+
         private void BindSystems()
         {
             BindSystem<Playeble.Scripts.Gameplay.Dragon.DragonSpawnInitSystem>(BindType.Game);
@@ -243,8 +259,11 @@ namespace Playeble.Scripts
             var scaleColors = _dragonScaleColors;
             if (_blocks != null && _blocks.Length > 0)
             {
+                var tutorialBlock = ResolveTutorialBlock();
+
                 var totalTurns = 0;
                 var slots = new List<GameContext.DragonScaleColorSlot>(_blocks.Length);
+                var tutorialSlotIndex = -1;
                 for (var i = 0; i < _blocks.Length; i++)
                 {
                     if (_blocks[i] == null)
@@ -258,12 +277,42 @@ namespace Playeble.Scripts
 
                     if (turns > 0)
                     {
+                        if (tutorialBlock != null && _blocks[i] == tutorialBlock)
+                        {
+                            tutorialSlotIndex = slots.Count;
+                        }
+
                         slots.Add(new GameContext.DragonScaleColorSlot
                         {
                             Type = _blocks[i].Type,
                             Count = turns,
                             ColorOffset = _blocks[i].ColorOffset
                         });
+                    }
+                }
+
+                // Туториал: первые секции дракона должны быть цвета блока,
+                // на который указывает палец, в количестве, равном объёму
+                // (Turns) этого блока. Для этого ставим его слот первым —
+                // GetColorSlot раскрашивает первые Count чешуек по slots[0].
+                if (tutorialSlotIndex > 0)
+                {
+                    var tutorialSlot = slots[tutorialSlotIndex];
+                    slots.RemoveAt(tutorialSlotIndex);
+                    slots.Insert(0, tutorialSlot);
+                }
+                else if (tutorialSlotIndex < 0 && tutorialBlock != null)
+                {
+                    var turns = Mathf.Max(0, tutorialBlock.Turns);
+                    if (turns > 0)
+                    {
+                        slots.Insert(0, new GameContext.DragonScaleColorSlot
+                        {
+                            Type = tutorialBlock.Type,
+                            Count = turns,
+                            ColorOffset = tutorialBlock.ColorOffset
+                        });
+                        totalTurns += turns;
                     }
                 }
 
