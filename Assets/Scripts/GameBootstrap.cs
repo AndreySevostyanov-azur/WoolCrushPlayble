@@ -412,6 +412,13 @@ namespace Playeble.Scripts
         {
         }
 
+#if UNITY_EDITOR
+        public void EditorSetBlocks(DragonColorBlock[] blocks)
+        {
+            _blocks = blocks;
+        }
+#endif
+
 
         public void Update()
         {
