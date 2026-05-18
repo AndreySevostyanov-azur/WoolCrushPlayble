@@ -55,6 +55,26 @@ namespace Playeble.Scripts.Gameplay.ReelSlots
                 secondsPerScale = 0.01f;
             }
 
+            // Зона смотки: чешуйку можно смотать, только если она ниже линии
+            // смотки (меньший экранный Y; 0% = низ экрана). Линию позиционирует
+            // GameBootstrap. Если линия/камера не заданы — gate выключен.
+            var worldCamera = _ctx != null ? _ctx.WorldCamera : null;
+            var windGateEnabled = false;
+            var windLineScreenY = 0f;
+            if (_ctx != null && _ctx.WindZoneLine != null && worldCamera != null)
+            {
+                Camera canvasCam = null;
+                var canvas = _ctx.UiCanvas;
+                if (canvas != null && canvas.renderMode != RenderMode.ScreenSpaceOverlay)
+                {
+                    canvasCam = canvas.worldCamera != null ? canvas.worldCamera : worldCamera;
+                }
+
+                windLineScreenY = RectTransformUtility
+                    .WorldToScreenPoint(canvasCam, _ctx.WindZoneLine.position).y;
+                windGateEnabled = true;
+            }
+
             var hasPathEnd = false;
             var pathEndPos = default(Vector3);
             if (_ctx != null && _ctx.DragonPath != null)
@@ -165,7 +185,10 @@ namespace Playeble.Scripts.Gameplay.ReelSlots
                         scaleColorDense,
                         scaleColorSparse,
                         partDense,
-                        partSparse);
+                        partSparse,
+                        windGateEnabled,
+                        windLineScreenY,
+                        worldCamera);
                     target = GetMarkerByEntity(targetEntity, markerDense, markerSparse);
                     if (targetEntity < 0 || target == null)
                     {
@@ -253,7 +276,10 @@ namespace Playeble.Scripts.Gameplay.ReelSlots
             DragonScaleColor[] scaleColorDense,
             int[] scaleColorSparse,
             DragonPart[] partDense,
-            int[] partSparse)
+            int[] partSparse,
+            bool windGateEnabled,
+            float windLineScreenY,
+            Camera worldCamera)
         {
             var entities = _scaleCandidates.GetRawEntities();
             var count = _scaleCandidates.GetEntitiesCount();
@@ -298,6 +324,17 @@ namespace Playeble.Scripts.Gameplay.ReelSlots
                 }
 
                 var p = marker.transform.position;
+
+                // Чешуйка должна быть ниже линии смотки (меньший экранный Y).
+                if (windGateEnabled && worldCamera != null)
+                {
+                    var screenY = worldCamera.WorldToScreenPoint(p).y;
+                    if (screenY > windLineScreenY)
+                    {
+                        continue;
+                    }
+                }
+
                 if (partIndex < bestPartIndex)
                 {
                     bestPartIndex = partIndex;

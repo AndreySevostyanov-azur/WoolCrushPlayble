@@ -27,7 +27,13 @@ namespace Playeble.Scripts
         [SerializeField] private GameObject _startScreen;
         [SerializeField] private EndScreenView _endScreenView;
         [SerializeField] private AudioSource _ambient;
-        
+
+        [Header("Зона смотки")]
+        [LunaPlaygroundField("Зона смотки %", 0, "Игровое поле")]
+        [Range(0f, 100f)]
+        [SerializeField] private float _windZonePercent = 50f;
+        [SerializeField] private RectTransform _windZoneLine;
+
         [SerializeField] private bool _showBootOverlay = true;
         
         [Header("Dragon (LeoECSLite)")] [SerializeField]
@@ -110,6 +116,7 @@ namespace Playeble.Scripts
             InitEcsGame();
             Debug.Log("GameBootstrap.InitEcsGame() completed");
             ApplyRopeColorOffsetConfig();
+            ApplyWindZonePosition();
 
             if (_showBootOverlay)
             {
@@ -134,6 +141,21 @@ namespace Playeble.Scripts
 
                 slot.Rope.SetColorOffsetConfig(_ropeColorOffsetConfig);
             }
+        }
+
+        private void ApplyWindZonePosition()
+        {
+            if (_windZoneLine == null)
+            {
+                return;
+            }
+
+            // 0% = низ экрана, 100% = верх. Через anchors -> доля высоты экрана
+            // (разрешение-независимо, корректно для динамического ресайза Luna).
+            var p = Mathf.Clamp01(_windZonePercent / 100f);
+            _windZoneLine.anchorMin = new Vector2(0f, p);
+            _windZoneLine.anchorMax = new Vector2(1f, p);
+            _windZoneLine.anchoredPosition = new Vector2(0f, 0f);
         }
 
         private void BindSystems()
@@ -280,7 +302,10 @@ namespace Playeble.Scripts
                 _dragonRebukeDuration,
                 _dragonVariableAccelerationSettings,
                 _blockMoveSpeed,
-                _dragonBreathConfig);
+                _dragonBreathConfig,
+                _worldCamera,
+                _uiCanvas,
+                _windZoneLine);
 
             _gameContext.GameEnd += GameEnd;
             

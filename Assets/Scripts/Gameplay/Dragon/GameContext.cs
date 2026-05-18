@@ -33,6 +33,10 @@ namespace Playeble.Scripts.Gameplay.Dragon
         public DragonBreathConfig DragonBreathConfig { get; }
         public float BlockMoveSpeed { get; }
 
+        public Camera WorldCamera { get; }
+        public Canvas UiCanvas { get; }
+        public RectTransform WindZoneLine { get; }
+
         public Action GameEnd;
 
         public GameContext(
@@ -54,8 +58,14 @@ namespace Playeble.Scripts.Gameplay.Dragon
             float dragonRebukeDuration,
             VariableAccelerationSettings dragonVariableAccelerationSettings,
             float blockMoveSpeed,
-            DragonBreathConfig dragonBreathConfig)
+            DragonBreathConfig dragonBreathConfig,
+            Camera worldCamera,
+            Canvas uiCanvas,
+            RectTransform windZoneLine)
         {
+            WorldCamera = worldCamera;
+            UiCanvas = uiCanvas;
+            WindZoneLine = windZoneLine;
             DragonBreathConfig = dragonBreathConfig;
             DragonPath = dragonPath;
             DragonRoot = dragonRoot;
