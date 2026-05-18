@@ -37,6 +37,10 @@ namespace Playeble.Scripts.Gameplay.Dragon
         public Canvas UiCanvas { get; }
         public RectTransform WindZoneLine { get; }
 
+        public GameObject BlockCollisionEffectPrefab { get; }
+        public float BlockCollisionEffectLifetime { get; }
+        public Vector3 BlockCollisionEffectOffset { get; }
+
         public Action GameEnd;
 
         public GameContext(
@@ -61,11 +65,17 @@ namespace Playeble.Scripts.Gameplay.Dragon
             DragonBreathConfig dragonBreathConfig,
             Camera worldCamera,
             Canvas uiCanvas,
-            RectTransform windZoneLine)
+            RectTransform windZoneLine,
+            GameObject blockCollisionEffectPrefab,
+            float blockCollisionEffectLifetime,
+            Vector3 blockCollisionEffectOffset)
         {
             WorldCamera = worldCamera;
             UiCanvas = uiCanvas;
             WindZoneLine = windZoneLine;
+            BlockCollisionEffectPrefab = blockCollisionEffectPrefab;
+            BlockCollisionEffectLifetime = blockCollisionEffectLifetime;
+            BlockCollisionEffectOffset = blockCollisionEffectOffset;
             DragonBreathConfig = dragonBreathConfig;
             DragonPath = dragonPath;
             DragonRoot = dragonRoot;

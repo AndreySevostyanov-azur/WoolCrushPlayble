@@ -2072,6 +2072,9 @@ MonoBehaviour:
   _ambient: {fileID: 236135073}
   _windZonePercent: 85
   _windZoneLine: {fileID: 980835054}
+  _blockCollisionEffectPrefab: {fileID: 4597106198244764267, guid: 2bed1e7ab3c215a4082d6bbbc3ef0954, type: 3}
+  _blockCollisionEffectLifetime: 1.5
+  _blockCollisionEffectOffset: {x: 0, y: 2, z: -1}
   _showBootOverlay: 1
   _dragonPath: {fileID: 934411083}
   _dragonRoot: {fileID: 0}

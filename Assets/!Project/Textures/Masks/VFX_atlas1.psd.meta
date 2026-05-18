@@ -97,12 +97,12 @@ TextureImporter:
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 53
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -114,6 +114,19 @@ TextureImporter:
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 81
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -2331,7 +2344,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -2340,6 +2353,1062 @@ TextureImporter:
       bones: []
       spriteID: c629187643144e8428634ed8e84acf30
       internalID: 561631916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_atlas1_cloud
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 767
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f85ce631a9e04c94b85dfa32fbefca15
+      internalID: 418029961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_atlas1_snowflake
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 909172d1ad3f388459b09f73498fe65a
+      internalID: -1264130966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_atlas1_whirpool
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 586425db9a0284041b03a0491b004838
+      internalID: -2141855212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_atlas1_Wheel
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b9ffc6545895574384a75b2f6aa1fb5
+      internalID: -2034257783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_Smoke2_8
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad8e451833a14874f92e7611540ade7a
+      internalID: -798846641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_Smoke2_7
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c30fdb4f03f6bf4d85c67f68891e7d5
+      internalID: -1610216323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_Smoke2_6
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3f4d97be828aaf49b681e993fc7f095
+      internalID: 1379412761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_Smoke2_5
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e0d7cdac3cb45240a52a70d82099aa3
+      internalID: -1462177231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_Smoke2_4
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 328a37dab4b592746827090daa73ed86
+      internalID: -89931016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_Smoke2_3
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad71e70f2a105104484865b704c0e301
+      internalID: -899995740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_Smoke2_2
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a48811355c31f74da6d3cd5ca04ce2a
+      internalID: -1918512378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_Smoke2_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad32475f5cceab74f9f2230a7270278b
+      internalID: -99790781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_stripe
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac42965a06add88418b98b014fcc326d
+      internalID: -1035910261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puff3
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa2f76915bb2a94992a1b2b42c7cef6
+      internalID: 2100630818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puff2
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1bc3765dfceeeb46a2fea5cfc5c534c
+      internalID: 1140133029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puff1
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf7aa901777d46d4bb043e18cc19e6e9
+      internalID: 496828091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puff4
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02f7a62b87a4e284aa70286b43e2ec6e
+      internalID: 1339336734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puff5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3be7c0907a35ad4ba3076071ff7ea09
+      internalID: -746745088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puff6
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69d66974c44c9da4cb2438fbabc5d0ea
+      internalID: 946838180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puff7
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0065a3bba172b841862a2f50c65b42c
+      internalID: -1720019823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puff8
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6384a8e346a91346a146126d3f0fa2e
+      internalID: -1426264141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puff9
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f54c0a39689664ead1ac18d3eafe6a
+      internalID: -1769655629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Puff10
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e6446822ae812b4bae2a07476f38209
+      internalID: 903978962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2da0e8e79e92a3c43b700209bb916179
+      internalID: -1205817857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke2
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 165b5ea3b3dbe0a40ac7cb78082bdebb
+      internalID: -250320282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke3
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90c4822e0a9a881469caa86056a739d8
+      internalID: -564008066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke4
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6b49c0370a3e304e9e3df7210c30533
+      internalID: 1063727334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke5
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11b438c7ef7bbfa40a72c60f4f1c30d2
+      internalID: 443384143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke6
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5178310d097973c46bc26a5066ae492d
+      internalID: -406416871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke7
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69c9443133a2c4c40a317a4100012b25
+      internalID: -136362411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lightning
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3762894a0b59d544f81c69a0531783f3
+      internalID: -58653679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_RainCircle
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19296abeb9d31344d959080f251a5b19
+      internalID: 1919268389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_leave_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1056
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a456632a6f6990e438a292af0b9f5c03
+      internalID: -151338293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_leave_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1056
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45b47917ce7730d4ba9ec1cd2dcec1d5
+      internalID: 1025931669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_leave_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 859929cf61ecad54986f288c982d0b27
+      internalID: 1536162202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_leave_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1024
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 779be96a9d6255b4f8574e75897d6b56
+      internalID: 73849209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_lighting
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1792
+        width: 640
+        height: 256
+      alignment: 9
+      pivot: {x: 0, y: 0.9}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e546bdd398a83e64a9e1746a3a638e25
+      internalID: 188037990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_Square_2x1_2
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1024
+        width: 304
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf4b6f4566052394e9033b1cb75daf98
+      internalID: -1606875273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_glow_L_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 880e90b40729f82468918c9aaa2627bc
+      internalID: 810887308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_star_4
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 545c9dc7ad315e84e894db58cb1daf94
+      internalID: -1590096671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_Portal_ring_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75a98108e8ebf4a4381ad642c9e7b033
+      internalID: -1373119194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_Portal_ring_2
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88983939f61bd3446bf661f0748acc1e
+      internalID: -416241714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_snowFlare_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1088
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12722d37bd21164448288a182a428cf8
+      internalID: 36255248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_snowFlare_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1088
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b97e980b26a50d84aa1ec50131b82a3f
+      internalID: 332007940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_snowFlare_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1024
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98243189d8b734940bb47bfb9bdc1482
+      internalID: 2031902129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_snowFlare_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a94fd85329e594646bfa6942cb7fb356
+      internalID: 1646099138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_DPglow
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 1280
+        width: 384
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1945beea13c18b408d94b7648fa4376
+      internalID: -662319883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_Square_2x1_4
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1152
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c605f0fb9edeb964e8ac7ba593d19e69
+      internalID: 308842666
       vertices: []
       indices: 
       edges: []
@@ -2358,7 +3427,29 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      VFX_Explosion_1: -1922379048
+      Lightning: -58653679
+      Puff1: 496828091
+      Puff10: 903978962
+      Puff2: 1140133029
+      Puff3: 2100630818
+      Puff4: 1339336734
+      Puff5: -746745088
+      Puff6: 946838180
+      Puff7: -1720019823
+      Puff8: -1426264141
+      Puff9: -1769655629
+      Smoke1: -1205817857
+      Smoke2: -250320282
+      Smoke3: -564008066
+      Smoke4: 1063727334
+      Smoke5: 443384143
+      Smoke6: -406416871
+      Smoke7: -136362411
+      VFX_DPglow: -662319883
+      VFX_Explosion_1: 404603866
+      VFX_Portal_ring_1: -1373119194
+      VFX_Portal_ring_2: -416241714
+      VFX_RainCircle: 1919268389
       VFX_Ring_0: 90018802
       VFX_Ring_1: -1466600498
       VFX_Ring_2: 308240216
@@ -2367,6 +3458,14 @@ TextureImporter:
       VFX_Ring_5: 2144545502
       VFX_Ring_6: -1440927535
       VFX_Slam: 613700398
+      VFX_Smoke2_1: -99790781
+      VFX_Smoke2_2: -1918512378
+      VFX_Smoke2_3: -899995740
+      VFX_Smoke2_4: -89931016
+      VFX_Smoke2_5: -1462177231
+      VFX_Smoke2_6: 1379412761
+      VFX_Smoke2_7: -1610216323
+      VFX_Smoke2_8: -798846641
       VFX_Smoke_0: 1787656683
       VFX_Smoke_1: -162920915
       VFX_Smoke_2: -876291549
@@ -2375,257 +3474,263 @@ TextureImporter:
       VFX_Smoke_5: -1188156303
       VFX_Smoke_6: -921545164
       VFX_Smoke_7: -96648415
-      VFX_Soul: -386365162
+      VFX_Soul: -447363371
       VFX_Square_2x1_0: -396539348
       VFX_Square_2x1_1: 1457264391
+      VFX_Square_2x1_2: -1606875273
+      VFX_Square_2x1_4: 308842666
       VFX_arrow2: 1537025077
       VFX_arrow_0: -1772902359
       VFX_arrow_1: 90617191
-      VFX_arrow_2: -1112061348
-      VFX_atlas_1: -782063494
-      VFX_atlas_10: -197705024
-      VFX_atlas_100: -1589729928
-      VFX_atlas_101: -1126767126
-      VFX_atlas_102: 1495741981
-      VFX_atlas_103: -1310374063
-      VFX_atlas_104: 406634971
-      VFX_atlas_105: -1372011371
-      VFX_atlas_106: 2102598650
-      VFX_atlas_107: 2033486973
-      VFX_atlas_108: -874022128
-      VFX_atlas_109: 2013780353
-      VFX_atlas_11: 343073499
-      VFX_atlas_110: 502491006
-      VFX_atlas_111: 1182849554
-      VFX_atlas_112: -159441808
-      VFX_atlas_113: 1649695426
-      VFX_atlas_114: -1265736361
-      VFX_atlas_115: -2066040753
-      VFX_atlas_116: -1350466086
-      VFX_atlas_117: 516871270
-      VFX_atlas_118: -1452055385
-      VFX_atlas_119: 167187002
-      VFX_atlas_12: -292129679
-      VFX_atlas_120: 1476387389
-      VFX_atlas_121: 1513531317
-      VFX_atlas_122: 274913119
-      VFX_atlas_123: -1079745957
-      VFX_atlas_124: 1567258877
-      VFX_atlas_125: 578782780
-      VFX_atlas_126: -307567371
-      VFX_atlas_127: 2383425
-      VFX_atlas_128: 651768505
-      VFX_atlas_129: 1061825756
-      VFX_atlas_13: 1586406958
-      VFX_atlas_130: -294798774
-      VFX_atlas_131: -1922668635
-      VFX_atlas_132: -1643276217
-      VFX_atlas_133: -662087946
-      VFX_atlas_134: 395158937
-      VFX_atlas_135: 548360869
-      VFX_atlas_136: -323046898
-      VFX_atlas_137: 1823182702
-      VFX_atlas_138: -1566087230
-      VFX_atlas_139: -1890090218
-      VFX_atlas_14: -1630087364
-      VFX_atlas_140: -872140054
-      VFX_atlas_141: 842205566
-      VFX_atlas_142: 1023295201
-      VFX_atlas_143: -1922015651
-      VFX_atlas_144: 1230115997
-      VFX_atlas_145: 2056500264
-      VFX_atlas_146: -2124214681
-      VFX_atlas_147: -1272020787
-      VFX_atlas_148: -1512807556
-      VFX_atlas_149: 1990764516
-      VFX_atlas_15: 2077180657
-      VFX_atlas_150: 815433991
-      VFX_atlas_151: -517032160
-      VFX_atlas_152: -144144355
-      VFX_atlas_153: -1327668745
-      VFX_atlas_154: 1969870900
-      VFX_atlas_155: 1766027776
-      VFX_atlas_156: -1512164308
-      VFX_atlas_157: 498074564
-      VFX_atlas_158: -1423120644
-      VFX_atlas_159: 1836618990
-      VFX_atlas_16: 792157749
-      VFX_atlas_160: -84099209
-      VFX_atlas_161: -1112817814
-      VFX_atlas_162: 409516550
-      VFX_atlas_163: -1948209436
-      VFX_atlas_164: 945853499
-      VFX_atlas_165: 707379132
-      VFX_atlas_166: 399977528
-      VFX_atlas_167: -1600578655
-      VFX_atlas_168: -1824850829
-      VFX_atlas_169: 373801751
-      VFX_atlas_17: 1169489484
-      VFX_atlas_170: 348898789
-      VFX_atlas_171: -1504020770
-      VFX_atlas_172: 744959728
-      VFX_atlas_173: -919481035
-      VFX_atlas_174: -1277562385
-      VFX_atlas_175: -783704354
-      VFX_atlas_176: 1809683006
-      VFX_atlas_177: -402898483
-      VFX_atlas_178: 74653251
-      VFX_atlas_179: 123123621
-      VFX_atlas_18: 1508623129
-      VFX_atlas_180: 1711659695
-      VFX_atlas_181: -646587496
-      VFX_atlas_182: 1755880674
-      VFX_atlas_183: -52894317
-      VFX_atlas_184: -1380903321
-      VFX_atlas_185: -390217583
-      VFX_atlas_186: 377774869
-      VFX_atlas_187: 347161637
-      VFX_atlas_188: -2045483175
-      VFX_atlas_189: -933781481
-      VFX_atlas_19: -1401225454
-      VFX_atlas_190: 142122880
-      VFX_atlas_191: 1093108261
-      VFX_atlas_192: -795236270
-      VFX_atlas_193: 1637128131
-      VFX_atlas_194: 1249203155
-      VFX_atlas_195: 1273798293
-      VFX_atlas_196: 427064215
-      VFX_atlas_197: -1999439151
-      VFX_atlas_198: -1127219596
-      VFX_atlas_199: -879963823
-      VFX_atlas_20: -1558308285
-      VFX_atlas_200: -936989544
-      VFX_atlas_201: 1792212183
-      VFX_atlas_202: -1211372871
-      VFX_atlas_203: -1470416438
-      VFX_atlas_204: -1587741924
-      VFX_atlas_205: -1925459561
-      VFX_atlas_206: -1739221005
-      VFX_atlas_207: -653007765
-      VFX_atlas_208: -389325674
-      VFX_atlas_209: 166876121
-      VFX_atlas_21: -566509736
-      VFX_atlas_210: 2029048123
-      VFX_atlas_211: 170872207
-      VFX_atlas_212: 53904579
-      VFX_atlas_213: -1802178989
-      VFX_atlas_214: -445380075
-      VFX_atlas_215: 411039437
-      VFX_atlas_216: -2034456806
-      VFX_atlas_217: -575834836
-      VFX_atlas_218: -1070843290
-      VFX_atlas_219: 1256446319
-      VFX_atlas_22: 89271216
-      VFX_atlas_220: -1821853387
-      VFX_atlas_221: 7413104
-      VFX_atlas_222: 1148773179
-      VFX_atlas_223: 1291583416
-      VFX_atlas_224: -1019360931
-      VFX_atlas_225: 1652043085
-      VFX_atlas_226: -268339770
-      VFX_atlas_227: 1960152742
-      VFX_atlas_228: 1972290191
-      VFX_atlas_229: 486513842
-      VFX_atlas_23: 1112501904
-      VFX_atlas_230: 784575791
-      VFX_atlas_231: 189906721
-      VFX_atlas_232: 1701457591
-      VFX_atlas_233: 1632043662
-      VFX_atlas_234: -1925624536
-      VFX_atlas_235: -188727403
-      VFX_atlas_236: -142975193
-      VFX_atlas_237: -1630547380
-      VFX_atlas_238: 1801883325
-      VFX_atlas_239: -1213951148
-      VFX_atlas_24: -1276740786
-      VFX_atlas_246: -2032035246
-      VFX_atlas_247: 1250399825
-      VFX_atlas_248: -1866799739
-      VFX_atlas_249: 1936466102
-      VFX_atlas_25: 807731178
-      VFX_atlas_256: -1867197545
-      VFX_atlas_257: 562597802
-      VFX_atlas_26: 1186027877
-      VFX_atlas_27: 1441971715
-      VFX_atlas_28: 805825812
-      VFX_atlas_29: 753106307
-      VFX_atlas_3: 1866475837
-      VFX_atlas_30: 1907515567
-      VFX_atlas_31: -541817181
-      VFX_atlas_32: 478223744
-      VFX_atlas_33: 185688659
-      VFX_atlas_34: -94001573
-      VFX_atlas_35: 362062918
-      VFX_atlas_36: -313604397
-      VFX_atlas_37: 959409141
-      VFX_atlas_38: 1864093931
-      VFX_atlas_39: 2019124119
-      VFX_atlas_4: 366040377
-      VFX_atlas_40: 1304242860
-      VFX_atlas_41: 570267391
-      VFX_atlas_42: 976028322
-      VFX_atlas_43: 1440073956
-      VFX_atlas_44: 1762516750
-      VFX_atlas_45: 194162877
-      VFX_atlas_46: -893626088
-      VFX_atlas_47: 1418885163
-      VFX_atlas_48: -1046621537
-      VFX_atlas_49: 737063865
-      VFX_atlas_5: -51454885
-      VFX_atlas_50: 1889170604
-      VFX_atlas_51: 1721972197
-      VFX_atlas_52: 862072260
-      VFX_atlas_53: -384587128
-      VFX_atlas_54: -1145168606
-      VFX_atlas_55: 1712803524
-      VFX_atlas_56: -923387597
-      VFX_atlas_57: 104143325
-      VFX_atlas_58: 1440422789
-      VFX_atlas_59: 1934723499
-      VFX_atlas_6: 2125841062
-      VFX_atlas_60: 1153129175
-      VFX_atlas_61: -601972123
-      VFX_atlas_62: 1177531162
-      VFX_atlas_63: 977432205
-      VFX_atlas_64: -2066658311
-      VFX_atlas_65: -356446276
-      VFX_atlas_66: 1765434687
-      VFX_atlas_67: -578954665
-      VFX_atlas_68: 634933391
-      VFX_atlas_69: -1913075658
-      VFX_atlas_7: 1001037893
-      VFX_atlas_70: -521916124
-      VFX_atlas_71: -1286678931
-      VFX_atlas_72: 1095190979
-      VFX_atlas_73: -2129783605
-      VFX_atlas_74: -256143589
-      VFX_atlas_75: 1792083751
-      VFX_atlas_76: 586518238
-      VFX_atlas_77: 177684402
-      VFX_atlas_78: 2026309477
-      VFX_atlas_79: -379668500
-      VFX_atlas_8: 303883836
-      VFX_atlas_80: -1634975518
-      VFX_atlas_81: 898749293
-      VFX_atlas_82: -747241751
-      VFX_atlas_83: -2022499967
-      VFX_atlas_84: 2026620754
-      VFX_atlas_85: 222696979
-      VFX_atlas_86: -859146627
-      VFX_atlas_87: -394421096
-      VFX_atlas_88: 213179641
-      VFX_atlas_89: 1553747673
-      VFX_atlas_9: -1753578188
-      VFX_atlas_90: -1619755661
-      VFX_atlas_91: -321093646
-      VFX_atlas_92: -1982114137
-      VFX_atlas_93: 1973703382
-      VFX_atlas_94: -981868572
-      VFX_atlas_95: -454830193
-      VFX_atlas_96: 2121213161
-      VFX_atlas_97: 753172361
-      VFX_atlas_98: -798486619
-      VFX_atlas_99: 2029137611
+      VFX_arrow_2: 1690515057
+      VFX_atlas1_Wheel: -2034257783
+      VFX_atlas1_cloud: 418029961
+      VFX_atlas1_snowflake: -1264130966
+      VFX_atlas1_whirpool: -2141855212
+      VFX_atlas_1: 2082655474
+      VFX_atlas_10: 347008742
+      VFX_atlas_100: -76603952
+      VFX_atlas_101: -1074098178
+      VFX_atlas_102: -535410946
+      VFX_atlas_103: 1232367658
+      VFX_atlas_104: -1762907236
+      VFX_atlas_105: -1703847441
+      VFX_atlas_106: -1449688591
+      VFX_atlas_107: 1338666911
+      VFX_atlas_108: 810028246
+      VFX_atlas_109: -369829729
+      VFX_atlas_11: -994667259
+      VFX_atlas_110: 963935917
+      VFX_atlas_111: -1131217286
+      VFX_atlas_112: -1672231668
+      VFX_atlas_113: 1665190780
+      VFX_atlas_114: 473704517
+      VFX_atlas_115: 2050590552
+      VFX_atlas_116: 566171328
+      VFX_atlas_117: -162761637
+      VFX_atlas_118: -889655244
+      VFX_atlas_119: 1748875147
+      VFX_atlas_12: 1416857118
+      VFX_atlas_120: -983072895
+      VFX_atlas_121: 1519869154
+      VFX_atlas_122: 696981287
+      VFX_atlas_123: 1845321187
+      VFX_atlas_124: -1049233857
+      VFX_atlas_125: 386658196
+      VFX_atlas_126: 613058977
+      VFX_atlas_127: 2029164793
+      VFX_atlas_128: -64169105
+      VFX_atlas_129: 1596913870
+      VFX_atlas_13: 2033086152
+      VFX_atlas_130: 175470809
+      VFX_atlas_131: 1625998578
+      VFX_atlas_132: -660333507
+      VFX_atlas_133: 1178716781
+      VFX_atlas_134: 2094097328
+      VFX_atlas_135: -1972200403
+      VFX_atlas_136: -2052917076
+      VFX_atlas_137: 541081132
+      VFX_atlas_138: -164751612
+      VFX_atlas_139: 2097531812
+      VFX_atlas_14: 402938682
+      VFX_atlas_140: 1956875061
+      VFX_atlas_141: 814802152
+      VFX_atlas_142: -842794096
+      VFX_atlas_143: -331197934
+      VFX_atlas_144: -586008210
+      VFX_atlas_145: 654904692
+      VFX_atlas_146: 64277147
+      VFX_atlas_147: 109635758
+      VFX_atlas_148: 1939905617
+      VFX_atlas_149: -1882531934
+      VFX_atlas_15: -1602296722
+      VFX_atlas_150: -1718319907
+      VFX_atlas_151: 1040492154
+      VFX_atlas_152: -726608712
+      VFX_atlas_153: -56318024
+      VFX_atlas_154: -179944880
+      VFX_atlas_155: 996730551
+      VFX_atlas_156: -1332136578
+      VFX_atlas_157: -319619497
+      VFX_atlas_158: -337831576
+      VFX_atlas_159: 331801052
+      VFX_atlas_16: -1620187961
+      VFX_atlas_160: -1653413274
+      VFX_atlas_161: 2069250610
+      VFX_atlas_162: 1142310104
+      VFX_atlas_163: 4753054
+      VFX_atlas_164: -1018384503
+      VFX_atlas_165: -423580641
+      VFX_atlas_166: -893050493
+      VFX_atlas_167: -1045753205
+      VFX_atlas_168: -833950994
+      VFX_atlas_169: 144001639
+      VFX_atlas_17: 1769326117
+      VFX_atlas_170: -28560444
+      VFX_atlas_171: -986980021
+      VFX_atlas_172: -1432506398
+      VFX_atlas_173: -2032096264
+      VFX_atlas_174: 48875882
+      VFX_atlas_175: 1562319068
+      VFX_atlas_176: 1771100838
+      VFX_atlas_177: -642972542
+      VFX_atlas_178: 2014461432
+      VFX_atlas_179: -1710224589
+      VFX_atlas_18: 320106344
+      VFX_atlas_180: -1244063721
+      VFX_atlas_181: -815892951
+      VFX_atlas_182: -200287068
+      VFX_atlas_183: 396596347
+      VFX_atlas_184: 62585128
+      VFX_atlas_185: -1661441056
+      VFX_atlas_186: 39926623
+      VFX_atlas_187: -747142098
+      VFX_atlas_188: -2030900226
+      VFX_atlas_189: 1257780145
+      VFX_atlas_19: -1104564215
+      VFX_atlas_190: 793254485
+      VFX_atlas_191: -1169911119
+      VFX_atlas_192: 734435201
+      VFX_atlas_193: -854531693
+      VFX_atlas_194: -2140312622
+      VFX_atlas_195: -60980147
+      VFX_atlas_196: -977598806
+      VFX_atlas_197: 1813108266
+      VFX_atlas_198: 774350341
+      VFX_atlas_199: -1243880195
+      VFX_atlas_20: -1260087631
+      VFX_atlas_200: 956725364
+      VFX_atlas_201: -399074977
+      VFX_atlas_202: 881428084
+      VFX_atlas_203: 763892258
+      VFX_atlas_204: 429520801
+      VFX_atlas_205: 1171933836
+      VFX_atlas_206: 1162660314
+      VFX_atlas_207: 1619303025
+      VFX_atlas_208: -971592133
+      VFX_atlas_209: 912479622
+      VFX_atlas_21: -2067593939
+      VFX_atlas_210: 449314940
+      VFX_atlas_211: -270199938
+      VFX_atlas_212: 1953930855
+      VFX_atlas_213: -1872983291
+      VFX_atlas_214: -940103303
+      VFX_atlas_215: -1519906630
+      VFX_atlas_216: -649089097
+      VFX_atlas_217: -77459323
+      VFX_atlas_218: 1529951771
+      VFX_atlas_219: -1586136062
+      VFX_atlas_22: -1628404090
+      VFX_atlas_220: -1386171045
+      VFX_atlas_221: -864630865
+      VFX_atlas_222: 424703156
+      VFX_atlas_223: -123235381
+      VFX_atlas_224: -1485487285
+      VFX_atlas_225: 38868546
+      VFX_atlas_226: 1625818217
+      VFX_atlas_227: 1405873572
+      VFX_atlas_228: 1563201230
+      VFX_atlas_229: 458942760
+      VFX_atlas_23: -70915894
+      VFX_atlas_230: -1895068506
+      VFX_atlas_231: -892518198
+      VFX_atlas_232: -63037473
+      VFX_atlas_233: -293547566
+      VFX_atlas_234: -375835014
+      VFX_atlas_235: 842931962
+      VFX_atlas_236: -377307074
+      VFX_atlas_237: -1087705016
+      VFX_atlas_238: -1762338854
+      VFX_atlas_239: -1130609983
+      VFX_atlas_24: 1323061217
+      VFX_atlas_246: -1091292355
+      VFX_atlas_247: -1765202516
+      VFX_atlas_248: -1111010570
+      VFX_atlas_249: -1021809970
+      VFX_atlas_25: 42647696
+      VFX_atlas_256: -1453426828
+      VFX_atlas_257: 1483717613
+      VFX_atlas_26: 289811761
+      VFX_atlas_27: 1476971201
+      VFX_atlas_28: -1925162571
+      VFX_atlas_29: 2064051871
+      VFX_atlas_3: 1438142620
+      VFX_atlas_30: 645901265
+      VFX_atlas_31: 899105799
+      VFX_atlas_32: 357743189
+      VFX_atlas_33: -2106528398
+      VFX_atlas_34: 1644893138
+      VFX_atlas_35: -828987126
+      VFX_atlas_36: 577818520
+      VFX_atlas_37: -1014734740
+      VFX_atlas_38: 920615864
+      VFX_atlas_39: 876412623
+      VFX_atlas_4: 551822276
+      VFX_atlas_40: -444121031
+      VFX_atlas_41: 2016495706
+      VFX_atlas_42: -1863012346
+      VFX_atlas_43: -1697010811
+      VFX_atlas_44: -1685040079
+      VFX_atlas_45: 739396467
+      VFX_atlas_46: -141161512
+      VFX_atlas_47: -309140564
+      VFX_atlas_48: -1155388926
+      VFX_atlas_49: 25333626
+      VFX_atlas_5: 1990776367
+      VFX_atlas_50: -1351775169
+      VFX_atlas_51: -1254219726
+      VFX_atlas_52: 2025502261
+      VFX_atlas_53: 1976950342
+      VFX_atlas_54: -1198942347
+      VFX_atlas_55: -1976242203
+      VFX_atlas_56: -751646259
+      VFX_atlas_57: -270986949
+      VFX_atlas_58: -1957468307
+      VFX_atlas_59: -1181221188
+      VFX_atlas_6: -129862877
+      VFX_atlas_60: 684301437
+      VFX_atlas_61: 37018252
+      VFX_atlas_62: 73418914
+      VFX_atlas_63: -1337442016
+      VFX_atlas_64: -252680486
+      VFX_atlas_65: -1113456063
+      VFX_atlas_66: -216797179
+      VFX_atlas_67: -1399927392
+      VFX_atlas_68: -1620912627
+      VFX_atlas_69: 1541825813
+      VFX_atlas_7: 1485113777
+      VFX_atlas_70: -158780477
+      VFX_atlas_71: 1347043190
+      VFX_atlas_72: -1054550166
+      VFX_atlas_73: 602555179
+      VFX_atlas_74: 2130425984
+      VFX_atlas_75: 1350226899
+      VFX_atlas_76: 336397819
+      VFX_atlas_77: 159272821
+      VFX_atlas_78: 531100058
+      VFX_atlas_79: -1329703744
+      VFX_atlas_8: 1635415712
+      VFX_atlas_80: 1279499702
+      VFX_atlas_81: 842882537
+      VFX_atlas_82: -89902463
+      VFX_atlas_83: -1796952532
+      VFX_atlas_84: -1804116288
+      VFX_atlas_85: 86544289
+      VFX_atlas_86: 1989428630
+      VFX_atlas_87: 1164008027
+      VFX_atlas_88: 1487134702
+      VFX_atlas_89: -419421831
+      VFX_atlas_9: 1799536037
+      VFX_atlas_90: -502536319
+      VFX_atlas_91: -1087993359
+      VFX_atlas_92: -766514270
+      VFX_atlas_93: -1205256788
+      VFX_atlas_94: -1206142372
+      VFX_atlas_95: -1400567096
+      VFX_atlas_96: 1476919997
+      VFX_atlas_97: -1702622774
+      VFX_atlas_98: 1711403142
+      VFX_atlas_99: 1771681693
       VFX_aura_0: -317805101
       VFX_circleRay: -1446725302
       VFX_cone: -1351267026
@@ -2655,8 +3760,9 @@ TextureImporter:
       VFX_explosion_7: -1338545558
       VFX_explosion_8: 1525483738
       VFX_explosion_9: 1830412131
-      VFX_flash_0: 2147039969
-      VFX_flash_1: -1590381242
+      VFX_flash_0: 828961107
+      VFX_flash_1: 168865701
+      VFX_glow_L_0: 810887308
       VFX_heart_0: 561631916
       VFX_hexo: -61029286
       VFX_impact_0_0: -1051825037
@@ -2676,6 +3782,11 @@ TextureImporter:
       VFX_impact_1_6: -2088835128
       VFX_impact_1_7: 1771585016
       VFX_leaf: -199719643
+      VFX_leave_0: -151338293
+      VFX_leave_1: 1025931669
+      VFX_leave_2: 1536162202
+      VFX_leave_3: 73849209
+      VFX_lighting: 188037990
       VFX_nova_0: -604667341
       VFX_nova_1: -863149432
       VFX_nova_2: 1959383975
@@ -2685,12 +3796,12 @@ TextureImporter:
       VFX_nova_6: 639086647
       VFX_nova_7: -403515303
       VFX_nova_8: 1435022596
-      VFX_ring_0: -736065317
-      VFX_ring_1: -672154378
-      VFX_ring_2: 1421632714
-      VFX_ring_3: 420961340
-      VFX_ring_4: -1674031789
-      VFX_ring_5: 894823541
+      VFX_ring_0: -244226982
+      VFX_ring_1: 275634799
+      VFX_ring_2: -714606900
+      VFX_ring_3: 1608786228
+      VFX_ring_4: -1731251823
+      VFX_ring_5: -1871628554
       VFX_shap e_0: -731009583
       VFX_shape_1: -1224262433
       VFX_shape_2: -1360050558
@@ -2708,20 +3819,26 @@ TextureImporter:
       VFX_smokeForward_7: 1419288780
       VFX_smokeForward_8: 78539228
       VFX_smokeForward_9: 811644751
+      VFX_snowFlare_0: 36255248
+      VFX_snowFlare_1: 332007940
+      VFX_snowFlare_2: 2031902129
+      VFX_snowFlare_4: 1646099138
       VFX_spark: -512342894
       VFX_spec: -2075256477
-      VFX_spray_0: -1775897395
-      VFX_spray_1: 711092146
-      VFX_spray_2: 1253676907
-      VFX_spray_3: 432180194
-      VFX_spray_4: -2061497323
-      VFX_spray_5: 1840568672
-      VFX_spray_6: 101217115
-      VFX_spray_7: -2063253817
+      VFX_spray_0: 1760467008
+      VFX_spray_1: -1726181001
+      VFX_spray_2: -478057052
+      VFX_spray_3: 1857752774
+      VFX_spray_4: -2020274950
+      VFX_spray_5: -392810422
+      VFX_spray_6: 629947088
+      VFX_spray_7: -1250948510
       VFX_star_0: 46093667
       VFX_star_1: 1823838682
       VFX_star_2: 1451193115
       VFX_star_3: 463400120
+      VFX_star_4: -1590096671
+      VFX_stripe: -1035910261
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -34,6 +34,11 @@ namespace Playeble.Scripts
         [SerializeField] private float _windZonePercent = 50f;
         [SerializeField] private RectTransform _windZoneLine;
 
+        [Header("Эффект коллизии блоков")]
+        [SerializeField] private GameObject _blockCollisionEffectPrefab;
+        [Min(0f)] [SerializeField] private float _blockCollisionEffectLifetime = 1.5f;
+        [SerializeField] private Vector3 _blockCollisionEffectOffset = new Vector3(0f, 0.5f, 0f);
+
         [SerializeField] private bool _showBootOverlay = true;
         
         [Header("Dragon (LeoECSLite)")] [SerializeField]
@@ -354,7 +359,10 @@ namespace Playeble.Scripts
                 _dragonBreathConfig,
                 _worldCamera,
                 _uiCanvas,
-                _windZoneLine);
+                _windZoneLine,
+                _blockCollisionEffectPrefab,
+                _blockCollisionEffectLifetime,
+                _blockCollisionEffectOffset);
 
             _gameContext.GameEnd += GameEnd;
             

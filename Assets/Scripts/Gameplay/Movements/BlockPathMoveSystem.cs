@@ -130,8 +130,15 @@ namespace Playeble.Scripts.Gameplay.Movements
                         pos = MoveTowardsPoint(pos, move.CachedBlockerPoint, stepDistance, epsilon);
                         tr.position = pos;
 
-                        if (Vector3.Distance(pos, move.CachedBlockerPoint) <= epsilon || IsIntersectingAnyBlock(view))
+                        var reachedBlockerPoint = Vector3.Distance(pos, move.CachedBlockerPoint) <= epsilon;
+                        var impact = TryGetCollisionImpact(view);
+                        if (reachedBlockerPoint || impact.Hit)
                         {
+                            if (impact.Hit)
+                            {
+                                SpawnCollisionEffect(impact.Point);
+                            }
+
                             move.MoveType = BlockMoveType.ToOrigin;
                         }
                         break;
@@ -598,18 +605,26 @@ namespace Playeble.Scripts.Gameplay.Movements
             return position + delta / dist * step;
         }
 
-        private bool IsIntersectingAnyBlock(BlockViewRef self)
+        private struct CollisionImpactResult
         {
+            public bool Hit;
+            public Vector3 Point;
+        }
+
+        private CollisionImpactResult TryGetCollisionImpact(BlockViewRef self)
+        {
+            var result = new CollisionImpactResult { Hit = false, Point = Vector3.zero };
+
             if (self.Collider == null)
             {
-                return false;
+                return result;
             }
 
             var a = self.Collider.bounds;
             var blockers = self.Block != null ? self.Block.BlockingBlocks : null;
             if (blockers == null || blockers.Length == 0)
             {
-                return false;
+                return result;
             }
 
             for (var i = 0; i < blockers.Length; i++)
@@ -626,13 +641,39 @@ namespace Playeble.Scripts.Gameplay.Movements
                     continue;
                 }
 
-                if (AabbIntersects(a, col.bounds))
+                var b = col.bounds;
+                if (AabbIntersects(a, b))
                 {
-                    return true;
+                    // Точка контакта между двумя блоками (середина взаимных
+                    // ближайших точек), чтобы эффект был ровно на месте удара.
+                    var pA = b.ClosestPoint(a.center);
+                    var pB = a.ClosestPoint(b.center);
+                    result.Point = (pA + pB) * 0.5f;
+                    result.Hit = true;
+                    return result;
                 }
             }
 
-            return false;
+            return result;
+        }
+
+        private void SpawnCollisionEffect(Vector3 impactPoint)
+        {
+            if (_ctx == null || _ctx.BlockCollisionEffectPrefab == null)
+            {
+                return;
+            }
+
+            // Смещение от точки импакта, чтобы эффект был над блоками.
+            var spawnPos = impactPoint + _ctx.BlockCollisionEffectOffset;
+
+            var go = Object.Instantiate(_ctx.BlockCollisionEffectPrefab, spawnPos, Quaternion.identity);
+
+            var lifetime = _ctx.BlockCollisionEffectLifetime;
+            if (lifetime > 0f && go != null)
+            {
+                Object.Destroy(go, lifetime);
+            }
         }
 
         private static bool AabbIntersects(Bounds a, Bounds b)
