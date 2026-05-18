@@ -10,6 +10,9 @@ namespace Playeble.Scripts.Gameplay.ReelSlots
         private readonly GameContext _ctx;
         private const float DisposeDuration = 0.12f;
 
+        private Canvas _windCanvas;
+        private bool _windCanvasResolved;
+
         private EcsWorld _world;
         private EcsFilter _slots;
         private EcsFilter _scaleCandidates;
@@ -63,8 +66,19 @@ namespace Playeble.Scripts.Gameplay.ReelSlots
             var windLineScreenY = 0f;
             if (_ctx != null && _ctx.WindZoneLine != null && worldCamera != null)
             {
+                // Канвас берём у самой линии, а не из _ctx.UiCanvas: линия может
+                // жить на другом канвасе (например ScreenSpaceCamera). Иначе для
+                // SSCamera-канваса camera=null и WorldToScreenPoint даёт неверный
+                // Y -> ни одна чешуйка не проходит gate, смотка не работает.
+                if (!_windCanvasResolved)
+                {
+                    _windCanvasResolved = true;
+                    var c = _ctx.WindZoneLine.GetComponentInParent<Canvas>();
+                    _windCanvas = c != null ? c.rootCanvas : _ctx.UiCanvas;
+                }
+
                 Camera canvasCam = null;
-                var canvas = _ctx.UiCanvas;
+                var canvas = _windCanvas;
                 if (canvas != null && canvas.renderMode != RenderMode.ScreenSpaceOverlay)
                 {
                     canvasCam = canvas.worldCamera != null ? canvas.worldCamera : worldCamera;
