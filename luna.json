@@ -2,7 +2,7 @@
     "version": "7.1.0",
     "projectId": "7e8230cc-65de-4aba-8d6c-64c69b51c8cd",
     "applicationID": 36343,
-    "creativeName": "WQ_Playable_4",
+    "creativeName": "WQ_Playable_3",
     "pgServer": "EU",
     "window": {
         "‐⁙": true
@@ -94,27 +94,27 @@
             "msbuildMac64": "/Library/Frameworks/Mono.framework/Versions/Current/bin/msbuild",
             "msbuildWin64": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\MSBuild.exe",
             "externalSources": [
-                ".\\Library\\PackageCache\\com.azur-marketing.audio@cdedcd7c5665",
-                ".\\Library\\PackageCache\\com.azur-marketing.ctabutton@4dc3e2d133d2",
-                ".\\Library\\PackageCache\\com.azur-marketing.fpscounter@9b3788a33f52",
-                ".\\Library\\PackageCache\\com.azur-marketing.helpers@8e129efe11b4",
-                ".\\Library\\PackageCache\\com.azur-marketing.input@927bb957c4a8",
-                ".\\Library\\PackageCache\\com.azur-marketing.orientation@1370b747edde",
-                ".\\Library\\PackageCache\\com.azur-marketing.particles-prewarmer@d7e58a48d043",
-                ".\\Library\\PackageCache\\com.azur-marketing.postprocess@69253a1c46ad",
-                ".\\Library\\PackageCache\\com.azur-marketing.screens@398f7714a8b1",
-                ".\\Library\\PackageCache\\com.azur-marketing.time-scaler@6511c16234fa",
-                ".\\Library\\PackageCache\\com.unity.nuget.newtonsoft-json@74deb55db2a0",
-                ".\\Library\\PackageCache\\com.azur-marketing.audio@3.4.0",
-                ".\\Library\\PackageCache\\com.azur-marketing.ctabutton@1.0.0",
-                ".\\Library\\PackageCache\\com.azur-marketing.fpscounter@1.0.3",
-                ".\\Library\\PackageCache\\com.azur-marketing.helpers@1.0.0",
-                ".\\Library\\PackageCache\\com.azur-marketing.input@1.0.0",
-                ".\\Library\\PackageCache\\com.azur-marketing.orientation@2.8.3",
-                ".\\Library\\PackageCache\\com.azur-marketing.particles-prewarmer@1.0.2",
-                ".\\Library\\PackageCache\\com.azur-marketing.postprocess@2.0.0",
-                ".\\Library\\PackageCache\\com.azur-marketing.screens@2.1.0",
-                ".\\Library\\PackageCache\\com.azur-marketing.time-scaler@1.0.2",
+                "./Library/PackageCache/com.azur-marketing.audio@cdedcd7c5665",
+                "./Library/PackageCache/com.azur-marketing.ctabutton@4dc3e2d133d2",
+                "./Library/PackageCache/com.azur-marketing.fpscounter@9b3788a33f52",
+                "./Library/PackageCache/com.azur-marketing.helpers@8e129efe11b4",
+                "./Library/PackageCache/com.azur-marketing.input@927bb957c4a8",
+                "./Library/PackageCache/com.azur-marketing.orientation@1370b747edde",
+                "./Library/PackageCache/com.azur-marketing.particles-prewarmer@d7e58a48d043",
+                "./Library/PackageCache/com.azur-marketing.postprocess@69253a1c46ad",
+                "./Library/PackageCache/com.azur-marketing.screens@398f7714a8b1",
+                "./Library/PackageCache/com.azur-marketing.time-scaler@6511c16234fa",
+                "./Library/PackageCache/com.unity.nuget.newtonsoft-json@74deb55db2a0",
+                "./Library/PackageCache/com.azur-marketing.audio@3.4.0",
+                "./Library/PackageCache/com.azur-marketing.ctabutton@1.0.0",
+                "./Library/PackageCache/com.azur-marketing.fpscounter@1.0.3",
+                "./Library/PackageCache/com.azur-marketing.helpers@1.0.0",
+                "./Library/PackageCache/com.azur-marketing.input@1.0.0",
+                "./Library/PackageCache/com.azur-marketing.orientation@2.8.3",
+                "./Library/PackageCache/com.azur-marketing.particles-prewarmer@1.0.2",
+                "./Library/PackageCache/com.azur-marketing.postprocess@2.0.0",
+                "./Library/PackageCache/com.azur-marketing.screens@2.1.0",
+                "./Library/PackageCache/com.azur-marketing.time-scaler@1.0.2",
                 "C:/PlaybleAds/ProjectsTemplate/Library/PackageCache/com.unity.2d.spriteshape@9e35352ae135"
             ],
             "externalJSLibraries": [],
@@ -147,9 +147,10 @@
             ]
         },
         "scenes": [
-            "Assets/Playable/Scenes/Playable_4.unity"
+            "Assets/Playable/Scenes/Playable_3.unity"
         ],
         "disabledScenes": [
+            "Assets/Playable/Scenes/Playable_4.unity",
             "Assets/Playable/Scenes/Template.unity",
             "Assets/Playable/Scenes/Template_2.unity"
         ],
@@ -43883,8 +43884,8 @@
         "rules": {
             "texture": {
                 "default": {
-                    "maxWidth": 1024,
-                    "maxHeight": 1024,
+                    "maxWidth": 512,
+                    "maxHeight": 512,
                     "format": "png32",
                     "compression": "quantSize",
                     "quality": 65,
@@ -43903,8 +43904,8 @@
                         "name": "Assets/TextMesh Pro/Fonts/LiberationSans SDF.asset"
                     },
                     {
-                        "maxWidth": 1024,
-                        "maxHeight": 1024,
+                        "maxWidth": 512,
+                        "maxHeight": 512,
                         "format": "png32",
                         "compression": "none",
                         "quality": 65,
@@ -43953,8 +43954,8 @@
                         "name": "Packages/com.azur-marketing.fpscounter/LiberationSans SDF.asset"
                     },
                     {
-                        "maxWidth": 1024,
-                        "maxHeight": 1024,
+                        "maxWidth": 512,
+                        "maxHeight": 512,
                         "format": "png32",
                         "compression": "none",
                         "quality": 65,
@@ -43963,8 +43964,8 @@
                         "name": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset"
                     },
                     {
-                        "maxWidth": 1024,
-                        "maxHeight": 1024,
+                        "maxWidth": 512,
+                        "maxHeight": 512,
                         "format": "png32",
                         "compression": "none",
                         "quality": 65,
@@ -43973,8 +43974,8 @@
                         "name": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset"
                     },
                     {
-                        "maxWidth": 1024,
-                        "maxHeight": 1024,
+                        "maxWidth": 512,
+                        "maxHeight": 512,
                         "format": "png32",
                         "compression": "none",
                         "quality": 65,
@@ -43983,8 +43984,8 @@
                         "name": "Assets/!Project/Fonts/Baloo2-Medium SDF.asset"
                     },
                     {
-                        "maxWidth": 1024,
-                        "maxHeight": 1024,
+                        "maxWidth": 512,
+                        "maxHeight": 512,
                         "format": "png32",
                         "compression": "none",
                         "quality": 65,
@@ -43993,8 +43994,8 @@
                         "name": "Assets/!Project/Fonts/Baloo2-SemiBold SDF.asset"
                     },
                     {
-                        "maxWidth": 1024,
-                        "maxHeight": 1024,
+                        "maxWidth": 512,
+                        "maxHeight": 512,
                         "format": "png32",
                         "compression": "none",
                         "quality": 65,
@@ -44003,8 +44004,8 @@
                         "name": "Assets/!Project/Fonts/Baloo2-Bold SDF.asset"
                     },
                     {
-                        "maxWidth": 1024,
-                        "maxHeight": 1024,
+                        "maxWidth": 512,
+                        "maxHeight": 512,
                         "format": "png32",
                         "compression": "none",
                         "quality": 65,
@@ -44013,8 +44014,8 @@
                         "name": "Assets/!Project/Fonts/Baloo2-ExtraBold SDF.asset"
                     },
                     {
-                        "maxWidth": 1024,
-                        "maxHeight": 1024,
+                        "maxWidth": 512,
+                        "maxHeight": 512,
                         "format": "png32",
                         "compression": "none",
                         "quality": 65,
@@ -44023,8 +44024,8 @@
                         "name": "Assets/!Project/Fonts/Baloo2-Regular SDF ExtraBold.asset"
                     },
                     {
-                        "maxWidth": 1024,
-                        "maxHeight": 1024,
+                        "maxWidth": 512,
+                        "maxHeight": 512,
                         "format": "png32",
                         "compression": "none",
                         "quality": 65,
@@ -44033,14 +44034,24 @@
                         "name": "Assets/!Project/Fonts/Baloo2-ExtraBold SDF 1.asset"
                     },
                     {
-                        "maxWidth": 1024,
-                        "maxHeight": 1024,
+                        "maxWidth": 512,
+                        "maxHeight": 512,
                         "format": "png32",
                         "compression": "none",
                         "quality": 65,
                         "script": "",
                         "ext": "",
                         "name": "Assets/!Project/Fonts/Baloo2-Regular SDF.asset"
+                    },
+                    {
+                        "maxWidth": 1024,
+                        "maxHeight": 1024,
+                        "format": "png32",
+                        "compression": "quantSize",
+                        "quality": 65,
+                        "script": "",
+                        "ext": "",
+                        "name": "Assets/!Project/Sprites/Levels/Roads_play3.png"
                     }
                 ]
             },
