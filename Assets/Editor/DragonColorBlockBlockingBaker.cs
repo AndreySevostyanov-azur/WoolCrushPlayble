@@ -13,16 +13,33 @@ namespace Playeble.EditorTools
         [MenuItem("Tools/Blocks/Bake Blocking Blocks (All)")]
         public static void BakeAll()
         {
-            var blocks = UnityEngine.Object.FindObjectsOfType<DragonColorBlock>(true);
-            if (blocks == null || blocks.Length == 0)
+            var found = UnityEngine.Object.FindObjectsOfType<DragonColorBlock>(true);
+            if (found == null || found.Length == 0)
             {
                 return;
             }
 
+            // Детерминированный порядок (по индексам siblings от корня к листу),
+            // чтобы список не "прыгал" между вызовами FindObjectsOfType.
+            var blocks = new List<DragonColorBlock>(found);
+            blocks.Sort((a, b) => string.CompareOrdinal(
+                BuildHierarchyOrderKey(a != null ? a.transform : null),
+                BuildHierarchyOrderKey(b != null ? b.transform : null)));
+
+            // 1) Перед бейком заполняем список блоков в GameBootstrap всеми
+            // блоками, что есть на сцене.
+            var bootstrap = UnityEngine.Object.FindObjectOfType<Playeble.Scripts.GameBootstrap>(true);
+            if (bootstrap != null)
+            {
+                Undo.RecordObject(bootstrap, "Fill GameBootstrap Blocks");
+                bootstrap.EditorSetBlocks(blocks.ToArray());
+                EditorUtility.SetDirty(bootstrap);
+            }
+
             // Pre-cache bounds once (Collider.bounds or fallback).
-            var cols = new Collider[blocks.Length];
-            var bounds = new Bounds[blocks.Length];
-            for (var i = 0; i < blocks.Length; i++)
+            var cols = new Collider[blocks.Count];
+            var bounds = new Bounds[blocks.Count];
+            for (var i = 0; i < blocks.Count; i++)
             {
                 var b = blocks[i];
                 if (b == null)
@@ -46,7 +63,7 @@ namespace Playeble.EditorTools
             }
 
             var any = false;
-            for (var i = 0; i < blocks.Length; i++)
+            for (var i = 0; i < blocks.Count; i++)
             {
                 var self = blocks[i];
                 if (self == null)
@@ -73,12 +90,19 @@ namespace Playeble.EditorTools
                 var selfMin = selfBounds.min;
                 var selfMax = selfBounds.max;
 
-                // Luna runtime movement is mostly axis-aligned: pick dominant axis.
-                var moveAlongX = Mathf.Abs(forwardXZ.x) >= Mathf.Abs(forwardXZ.z);
-                var sign = moveAlongX ? (forwardXZ.x >= 0f ? 1f : -1f) : (forwardXZ.z >= 0f ? 1f : -1f);
+                // Блокеры ищем вдоль РЕАЛЬНОГО forward (XZ), а не по
+                // доминантной оси. Иначе блок, стоящий под углом, движется по
+                // диагонали, а детект считает его едущим строго по X или Z и
+                // пропускает реальные блокеры на диагонали. Логика совпадает с
+                // рантаймом StartBlockMoveOnClickSystem.GetForwardBlockerOrBoundary:
+                // t = dot(forward, delta) для "впереди", и боковой отступ по
+                // суммарным радиусам вместо AABB-полосы.
+                // Боковая ось — перпендикуляр к forward в плоскости XZ (unit).
+                var lateralDir = new Vector3(forwardXZ.z, 0f, -forwardXZ.x);
+                var selfLateral = ProjectedHalfExtent(cols[i], selfBounds, lateralDir);
 
                 var candidates = new List<Candidate>(16);
-                for (var j = 0; j < blocks.Length; j++)
+                for (var j = 0; j < blocks.Count; j++)
                 {
                     if (j == i)
                     {
@@ -96,43 +120,31 @@ namespace Playeble.EditorTools
                     var otherMin = otherBounds.min;
                     var otherMax = otherBounds.max;
 
-                    // In-front test + distance sort key (T).
-                    float t;
-                    if (moveAlongX)
+                    // In-front test (проекция на forward) + sort key (T).
+                    var delta = otherCenter - selfCenter;
+                    var deltaXZ = new Vector3(delta.x, 0f, delta.z);
+                    var t = Vector3.Dot(forwardXZ, deltaXZ);
+                    if (t <= 0f)
                     {
-                        t = (otherCenter.x - selfCenter.x) * sign;
-                        if (t <= 0f)
-                        {
-                            continue;
-                        }
-
-                        // Lane overlap on Z (and Y) using AABB.
-                        if (!Overlaps1D(selfMin.z - Margin, selfMax.z + Margin, otherMin.z, otherMax.z))
-                        {
-                            continue;
-                        }
-                        if (!Overlaps1D(selfMin.y - Margin, selfMax.y + Margin, otherMin.y, otherMax.y))
-                        {
-                            continue;
-                        }
+                        continue;
                     }
-                    else
-                    {
-                        t = (otherCenter.z - selfCenter.z) * sign;
-                        if (t <= 0f)
-                        {
-                            continue;
-                        }
 
-                        // Lane overlap on X (and Y) using AABB.
-                        if (!Overlaps1D(selfMin.x - Margin, selfMax.x + Margin, otherMin.x, otherMax.x))
-                        {
-                            continue;
-                        }
-                        if (!Overlaps1D(selfMin.y - Margin, selfMax.y + Margin, otherMin.y, otherMax.y))
-                        {
-                            continue;
-                        }
+                    // Боковое отклонение от линии движения. Полупролёты —
+                    // проекции ОРИЕНТИРОВАННЫХ коробок на боковую ось, а не
+                    // раздутый мировой AABB (иначе повёрнутый блок ловит лишних
+                    // блокеров сильно в стороне от пути).
+                    var lateralDist = Mathf.Abs(Vector3.Dot(deltaXZ, lateralDir));
+                    var otherLateral = ProjectedHalfExtent(cols[j], otherBounds, lateralDir);
+                    var lateralLimit = selfLateral + otherLateral + Margin;
+                    if (lateralDist > lateralLimit)
+                    {
+                        continue;
+                    }
+
+                    // Вертикальное разделение (разная высота не блокирует).
+                    if (!Overlaps1D(selfMin.y - Margin, selfMax.y + Margin, otherMin.y, otherMax.y))
+                    {
+                        continue;
                     }
 
                     candidates.Add(new Candidate { Block = other, T = t });
@@ -177,6 +189,55 @@ namespace Playeble.EditorTools
         {
             public DragonColorBlock Block;
             public float T;
+        }
+
+        private static string BuildHierarchyOrderKey(Transform t)
+        {
+            if (t == null)
+            {
+                return string.Empty;
+            }
+
+            var chain = new List<int>(8);
+            var cur = t;
+            while (cur != null)
+            {
+                chain.Add(cur.GetSiblingIndex());
+                cur = cur.parent;
+            }
+
+            chain.Reverse();
+            var sb = new System.Text.StringBuilder(chain.Count * 7);
+            for (var i = 0; i < chain.Count; i++)
+            {
+                sb.Append(chain[i].ToString("D6"));
+                sb.Append('/');
+            }
+
+            return sb.ToString();
+        }
+
+        // Полупролёт коробки коллайдера вдоль оси axis (unit, XZ).
+        // Для BoxCollider — точная проекция ориентированной коробки
+        // (инвариантна к повороту). Иначе — fallback на мировой AABB.
+        private static float ProjectedHalfExtent(Collider col, Bounds fallbackBounds, Vector3 axis)
+        {
+            var box = col as BoxCollider;
+            if (box == null)
+            {
+                var e = fallbackBounds.extents;
+                return Mathf.Abs(axis.x) * e.x + Mathf.Abs(axis.y) * e.y + Mathf.Abs(axis.z) * e.z;
+            }
+
+            var trb = box.transform;
+            var ls = trb.lossyScale;
+            var hx = box.size.x * 0.5f * Mathf.Abs(ls.x);
+            var hy = box.size.y * 0.5f * Mathf.Abs(ls.y);
+            var hz = box.size.z * 0.5f * Mathf.Abs(ls.z);
+
+            return hx * Mathf.Abs(Vector3.Dot(axis, trb.right))
+                 + hy * Mathf.Abs(Vector3.Dot(axis, trb.up))
+                 + hz * Mathf.Abs(Vector3.Dot(axis, trb.forward));
         }
 
         private static bool Overlaps1D(float aMin, float aMax, float bMin, float bMax)
