@@ -1,0 +1,38 @@
+# 05 - Workflows
+
+`Last verified: 2026-11-09`
+
+## What exists and what does not
+
+- No automated tests, no CI, no `.github/`, no `Tests/` folder, no project asmdefs. The old instructions that mention domain tests,
+  `.github/project-context.md`, Unity MCP, Zenject installers, Asana or Notion do not apply here.
+- Compile check = Unity Editor console after a refresh. A `dotnet build` of the generated `.csproj` files is only a fallback and does not see Luna-only restrictions.
+
+## Verify a change
+
+1. Open the scene you touched (usually `Assets/Playable/Scenes/Playable_3.unity`), check the Console for compile errors and for `ECS system type does not implement IEcsSystem` / missing-reference errors from the systems.
+2. Play in the Editor (mouse works as touch): start screen appears after `_delayBeforePause`, first tap hides it, blocks move to slots, spools unwind scales, dragon is pushed back; play to **both** end states (win and lose) and confirm the end screen and the store button.
+3. If systems, serialized fields or prefabs changed: check every scene that uses them (all four scenes share `GameBootstrap`).
+4. Anything that may behave differently under Luna's JS pipeline (new C# features, reflection, `Instantiate` overloads, `foreach` on filters, async/threads, new packages, new shaders) needs a Luna export and a test in the Luna preview; the Editor cannot show these failures.
+5. Report verification honestly: Editor play proves logic and wiring only; it cannot prove Luna export size, JS compatibility, shader support on device, audio autoplay or real touch behaviour.
+
+## Luna export
+
+Done through the Luna Unity plugin window of package `com.unity.playworks.upp` 7.1.0, configured by `luna.json` and `Assets/SVC_Luna.asset`.
+The exact menu path and the export command line were not recorded when this KB was written; add them here when confirmed.
+Before exporting: confirm `luna.json` `scenes` lists only the scene you want to ship and that machine-specific local edits (`applicationID`, `msbuildWin64`, ...) are what you intend.
+
+## Git
+
+- Remote: `github.com/AndreySevostyanov-azur/WoolCrushPlayble`; default branch `main`; current feature branch at the time of writing: `feature/new_mechanics`.
+- Commit subjects in history are short, lowercase, imperative or noun phrases ("fix wind zone", "add impact on collision", "levels done"). Follow that unless told otherwise.
+- Never stage broadly: the tree usually has unrelated Unity churn (`luna.json`, `SVC_Luna.asset`, `ProjectVersion.txt`, package lock). Stage only task files.
+- Unity YAML (`.unity`, `.prefab`, `.asset`) is high-risk to hand-edit: prefer Editor-side wiring; if you must edit YAML, keep GUIDs/fileIDs intact and run `git diff --check`.
+- Moving a script keeps its `.meta` (GUID): use `git mv` for both files.
+
+## Definition of done
+
+- Compiles with no new Console errors; plays through win and lose in the Editor.
+- Minimal diff, only task files touched; no new third-party packages unless asked.
+- Luna-sensitive changes flagged as untested until exported.
+- KB updated per [INDEX.md](INDEX.md) when architecture, system order, components, scene wiring or paths changed, with an `UPDATELOG.md` line.
