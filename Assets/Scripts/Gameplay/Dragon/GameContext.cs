@@ -4,6 +4,7 @@ using AzurGames.Wool.Gameplay;
 using Gameplay;
 using UnityEngine;
 using Playeble.Scripts.Gameplay;
+using Playeble.Scripts.Gameplay.Mechanics;
 
 namespace Playeble.Scripts.Gameplay.Dragon
 {
@@ -40,6 +41,8 @@ namespace Playeble.Scripts.Gameplay.Dragon
         public GameObject BlockCollisionEffectPrefab { get; }
         public float BlockCollisionEffectLifetime { get; }
         public Vector3 BlockCollisionEffectOffset { get; }
+
+        public BlockMechanicsState Mechanics { get; set; }
 
         public Action GameEnd;
 

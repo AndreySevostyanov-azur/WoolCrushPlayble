@@ -1,74 +1,38 @@
 ---
 alwaysApply: true
-description: "Project-wide rules for Unity + LeoEcsLite + Zenject (combat-focused)."
+description: "Project-wide rules for the WoolCrushPlayble Luna playable (Unity + LeoEcsLite)."
 ---
 
 # Project Context (ALWAYS FOLLOW)
 
-## Stack & constraints
-- Unity project using **Leopotam.EcsLite** (ECS), **Zenject** (DI).
-- Gameplay logic must remain **data-oriented**: components are data, systems contain behavior.
-- Avoid introducing new third-party dependencies unless explicitly requested.
+Full contract: `AGENTS.md`. Knowledge base: `.claude/kb/INDEX.md` (read it, then the doc for the area you touch).
+
+## Stack and constraints
+- Luna playable ad. Unity 6 + URP, **Leopotam EcsLite** (embedded in `Assets/LeoEcs`). No Zenject, no UniTask, no addressables.
+- Gameplay stays data-oriented: components are structs, systems hold behavior, `GameBootstrap` owns the worlds and the system list.
+- Do not add third-party packages unless asked: Luna build size and compatibility are the limit.
+- Code may be converted to JS by Luna: no reflection, async/threads, `ref` returns, `foreach` over filters, LINQ in hot paths.
 
 ## Output discipline
-- Prefer **small, compile-safe steps**. If change is large: propose a plan, then implement step 1–2 only.
-- Never invent APIs/classes that are not present in the repo. If required context is missing, ask for the exact files/paths.
-- When modifying existing code, preserve naming, folder structure, and patterns used in the project.
+- Small, compile-safe steps. For a large change propose a plan, then implement step 1-2 only.
+- Never invent APIs or classes that are not in the repo; ask for the exact file if context is missing.
+- Preserve existing naming, folder structure and patterns. Minimal diff; no drive-by reformatting.
+- No comments that narrate the code; short ones only for Luna footguns or a non-obvious "why".
 
-## Performance rules (Unity + ECS)
-- No LINQ/allocations in hot paths (Run systems).
-- Prefer struct components, cached pools/filters initialized in Init().
-- No per-frame string building/log spam in Release paths.
-- Avoid reflection in runtime gameplay code.
-
-## Determinism & RNG (combat)
-- Random outcomes (crit/dodge/combo/procs) must go through a **single RNG service/pattern** (project-defined), not UnityEngine.Random directly, unless existing code already uses it.
-- Any “chance” checks must be auditable (loggable in debug builds) and reproducible when using a seeded RNG.
+## Performance
+- Cache pools and filters in `Init`; no allocations in `Run`; raw dense/sparse array access with bounds and `idx <= 0` checks (see `.claude/kb/01-conventions.md`).
+- No per-frame string building or log spam.
 
 ## System ordering
-- Do not reorder existing systems in GameBootstrap unless the task explicitly requires it.
-- If you add new systems, insert them with a clear reason and document dependencies (what events/components must exist before/after).
+- Do not reorder systems in `GameBootstrap.BindSystems` unless the task requires it. When adding a system, state which events/components it needs from earlier systems
+  and what later systems expect (`.claude/kb/02-gameplay-ecs.md`, "System order").
+- Every system has a public `(GameContext ctx)` constructor; new tunables are a serialized field on `GameBootstrap` plus a `GameContext` parameter/property.
 
-## Documentation
-- For any new subsystem (combat/skills/triggers), add a short markdown doc or comment header:
-  - purpose
-  - data contracts (components/events)
-  - system pipeline order
-  - extension points
+## Namespaces
+- ECS code uses `Playeble.Scripts.Gameplay.<Feature>` (Dragon, Movements, ReelSlots, Selection) - keep the "Playeble" spelling.
+- Views/enums in `Assets/!Project/Scripts` use `AzurGames.Wool.*`; Luna template scripts use `Azur.Playable*`; editor tools `Playeble.EditorTools`.
+- Match the namespace of the neighbouring files in the same folder.
 
-# Namespace Rules (MUST FOLLOW)
-
-## Primary rule
-- Every new C# file MUST use a namespace from the `PP.BaseProject.App.*` tree.
-- NEVER generate `namespace` based on the physical folder path if it conflicts with project conventions.
-- If ambiguous, choose the closest match from the mapping below and keep it consistent.
-
-## Canonical namespaces (use these exactly)
-- `PP.BaseProject.App.Gameplay`
-- `PP.BaseProject.App.States`
-- `PP.BaseProject.App.Gameplay.ECS.Components`
-- `PP.BaseProject.App.Gameplay.ECS.Systems`
-- `PP.BaseProject.App.Gameplay.ECS.Systems.Events`
-- `PP.BaseProject.App.Gameplay.ECS.Systems.Triggers`
-- `PP.BaseProject.App.Gameplay.ECS.Model`
-- `PP.BaseProject.App.Gameplay.ECS.Utils`
-
-## Type-to-namespace mapping (MUST, most-specific wins)
-- Apply the first matching rule from top to bottom.
-
-- Suffix mapping:
-  - `*TriggerSystem` => `PP.BaseProject.App.Gameplay.ECS.Systems.Triggers`
-  - `*EventSystem` => `PP.BaseProject.App.Gameplay.ECS.Systems.Events`
-  - `*System` => `PP.BaseProject.App.Gameplay.ECS.Systems`
-  - `*Component` => `PP.BaseProject.App.Gameplay.ECS.Components`
-  - `*Tag` => `PP.BaseProject.App.Gameplay.ECS.Components`
-  - `*State` => `PP.BaseProject.App.States`
-
-## ECS event components
-- ECS event marker components/entities MUST be placed in `PP.BaseProject.App.Gameplay.ECS.Components`
-  (optionally `...ECS.Components.Events` if such namespace exists in the project).
-- The `...ECS.Systems.Events` namespace is reserved for systems that process events.
-
-## Do not do
-- Do not create global namespace.
-- Do not create namespaces outside `PP.BaseProject.App.*`.
+## Scenes
+- Four scenes share `GameBootstrap` (`Playable_3`, `Playable_4`, `Template`, `Template_2`); only `Playable_3` is in the Luna export (`luna.json`).
+  A new serialized field needs a default that keeps the other scenes working.

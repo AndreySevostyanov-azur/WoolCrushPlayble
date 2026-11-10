@@ -1,22 +1,28 @@
 ---
-description: "LeoEcsLite core patterns: worlds, pools, filters, events, disposal."
-globs: ["Assets/**/Gameplay/**/*.cs", "Assets/**/ECS/**/*.cs", "Assets/**/Systems/**/*.cs"]
+description: "LeoEcsLite patterns used in this project: worlds, pools, filters, events, cleanup."
+globs: ["Assets/Scripts/**/*.cs"]
 ---
 
-# LeoEcsLite Core Patterns (FOLLOW)
+# LeoEcsLite Patterns (FOLLOW)
 
-## Pools & Filters
-- Cache pools and filters in `Init(IEcsSystems systems)`.
-- Do not call `world.GetPool<T>()` repeatedly inside loops.
-- Prefer a single filter iteration per system and avoid nested entity scans unless necessary.
+## Worlds and systems
+- `GameBootstrap` creates the game world (all systems) and a physics world (no systems bound). Systems are constructed with `GameContext`
+  via `Activator.CreateInstance(type, ctx)` - every system needs `public XxxSystem(GameContext ctx)`.
 
-## Event pattern
-- Events are represented as **event entities** or event components per project convention.
-- If an event is “one-tick”, ensure it gets cleaned up by the existing event cleanup mechanism (or add one).
+## Pools and filters
+- Cache `EcsPool<T>` and `EcsFilter` in `Init(IEcsSystems systems)`; never `GetPool<T>()` or build a filter inside a `Run` loop.
+- Iterate with raw arrays: `filter.GetRawEntities()`, `filter.GetEntitiesCount()`, `pool.GetRawDenseItems()`, `pool.GetRawSparseItems()`.
+- `sparse[entity] <= 0` means the component is absent. Bound-check `entity < sparse.Length`. Copy out, mutate, write back to `dense[idx]`.
+- Use `EcsUtils.SetComponent` (Dragon/DragonSpawnInitSystem.cs) after `pool.Add` instead of re-implementing it.
+
+## Events
+- An event is an entity with an `*Event` component, created by one system and deleted by its consumer or a `*CleanupSystem`, in the same frame.
+  Check the system order in `GameBootstrap.BindSystems`: an event created later in the list than its consumer is handled next frame.
+- Collect entity ids into a reused `List<int>` and delete after the loop; never delete while iterating a filter.
 
 ## Cross-entity references
-- Use `EcsPackedEntity` (or project’s preferred packed handle) for entity references stored in components.
-- Always validate packed entity before use (unpack check) in runtime systems.
+- Use `EcsPackedEntity` (`_world.PackEntity`) or an int id looked up through the pool each use; re-validate the pool slot before use.
+- When destroying a Unity GameObject that an entity references, delete the entity in the same step.
 
 ## Disposal
-- If a system allocates native/unmanaged resources or owns disposables, implement `IDisposable` and ensure GameBootstrap collects it (matches current pattern).
+- `GameBootstrap.Dispose` destroys both worlds and both system groups. Systems that own Unity objects must release them themselves; there is no `IDisposable` collection in the bootstrap.

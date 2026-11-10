@@ -1,6 +1,7 @@
 using AzurGames.Wool.Gameplay;
 using Leopotam.EcsLite;
 using Playeble.Scripts.Gameplay.Dragon;
+using Playeble.Scripts.Gameplay.Mechanics;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -139,6 +140,8 @@ namespace Playeble.Scripts.Gameplay.Movements
                                 SpawnCollisionEffect(impact.Point);
                             }
 
+                            StrikeBlocker(move, impact);
+                            move.Blocker = default(EcsPackedEntity);
                             move.MoveType = BlockMoveType.ToOrigin;
                         }
                         break;
@@ -609,6 +612,29 @@ namespace Playeble.Scripts.Gameplay.Movements
         {
             public bool Hit;
             public Vector3 Point;
+            public DragonColorBlock Block;
+        }
+
+        private void StrikeBlocker(BlockMoveData move, CollisionImpactResult impact)
+        {
+            var mechanics = _ctx != null ? _ctx.Mechanics : null;
+            if (mechanics == null || !mechanics.HasAny)
+            {
+                return;
+            }
+
+            var struck = -1;
+            if (impact.Hit)
+            {
+                struck = mechanics.EntityOf(impact.Block);
+            }
+            else if (!move.Blocker.Unpack(_world, out struck))
+            {
+                struck = -1;
+            }
+
+            mechanics.RaiseNudge(struck);
+            mechanics.RaiseStrike(struck);
         }
 
         private CollisionImpactResult TryGetCollisionImpact(BlockViewRef self)
@@ -650,6 +676,7 @@ namespace Playeble.Scripts.Gameplay.Movements
                     var pB = a.ClosestPoint(b.center);
                     result.Point = (pA + pB) * 0.5f;
                     result.Hit = true;
+                    result.Block = other;
                     return result;
                 }
             }

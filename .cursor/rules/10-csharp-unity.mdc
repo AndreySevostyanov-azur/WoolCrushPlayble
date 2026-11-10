@@ -6,18 +6,19 @@ description: "C# / Unity coding standards for this repo."
 # C# / Unity Standards
 
 ## Style
-- Prefer explicit types in public APIs; `var` allowed for obvious RHS.
-- Use clear names with suffixes:
-  - `*System` for ECS systems
-  - `*Component` for components
-  - `*Tag` for tag components
-  - `*Event` for event components/entities
-- Keep methods short; extract helpers when logic exceeds ~40–60 lines.
+- Allman braces, 4 spaces; explicit types in public APIs, `var` for obvious right-hand sides.
+- Naming: `*System` (implements `IEcsInitSystem`/`IEcsRunSystem`), plain-noun struct components (`*Ref` when wrapping a Unity object), `*Event` for one-tick events,
+  `*View`/`*Marker` for MonoBehaviours, `*Config`/`*Settings` for ScriptableObjects, private fields `_camelCase`, `sealed` where there is no inheritance.
+- Keep methods short; extract helpers past ~40-60 lines.
 
 ## Unity specifics
-- Avoid using `MonoBehaviour.Update()` for gameplay logic; prefer ECS systems.
-- If you must interact with Unity objects, do it via dedicated bridge/services (already present in repo patterns).
+- No gameplay logic in `MonoBehaviour.Update`; the only `Update` users are `GameBootstrap` (drives systems) and `ClickRaycastToEcsEvent` (input bridge).
+- Touch Unity objects from systems through view refs stored in components (`TransformRef`, `BlockViewRef`, `SlotView`, ...), as the existing systems do.
+- Serialized tuning: `[SerializeField] private` + read-only property, `[Min]`/`[Range]`/`[Header]`; Luna-editable values get `[LunaPlaygroundField]`.
+
+## Luna safety
+- No reflection, async/await, threads, LINQ, `ref` returns or `foreach` over filters in runtime code; prefer `GetComponent<Transform>()` and the existing `InstantiateSafe` pattern.
 
 ## Error handling
-- Fail fast in init/config validation (throw with clear message) but avoid exceptions in hot `Run()` loops.
-- Validate config presence once, cache references, avoid repeated provider calls each tick.
+- Validate config in `Init` (log with the system name and return); no exceptions in `Run`.
+- Cache references once; no repeated provider/camera lookups per tick except where the existing code already does (`Camera.main` in block path code).
