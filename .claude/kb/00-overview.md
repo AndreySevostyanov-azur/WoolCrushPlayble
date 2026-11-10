@@ -32,13 +32,15 @@ Scripts/
     Movements/                block move components + init/click/path-move systems
     ReelSlots/                slot components + init/assign/wind/sync-view systems
     Selection/                click raycast -> ECS event bridge
+    Mechanics/                Hidden / Ice / Chain block mechanics (authoring components, config, systems, views)
 !Project/
   Scripts/Gameplay/           view-side classes in namespace AzurGames.Wool.* (SlotView, CounterView,
                               SpoolSpriteConfig, SpoolVisualSet, BoxType, SlotStates, RopeSpriteShape, UI/*)
   Prefabs/ Models/ Materials/ Shaders/ Sprites/ Textures/ Animations/ Fonts/   art + prefabs
+  Mechanics/                  copied assets of the new block mechanics (shaders, materials, ice models, lock/pin/chain sprites)
   Audio.prefab
 !Configs/                     ScriptableObject assets (DragonBreathConfig, DragonVariableAccelerationSettings*,
-                              RopeColorOffsetConfig, SpoolSpriteConfig) + ambient mp3, small anims
+                              RopeColorOffsetConfig, SpoolSpriteConfig, BlockMechanicsConfig) + ambient mp3, small anims
 Playable/
   Scenes/                     Playable_3, Playable_4, Template, Template_2 (+ Examples/SelectorExample)
   Scripts/                    Luna template: Level, LunaSettings, LunaInspector, Screens/*
@@ -46,6 +48,7 @@ Playable/
 PlayablesPlugins/             Luna/ClickCounter.cs, EventLogger, OneScriptEffects (Azur playable template plugins)
 LeoEcs/ecslite-2025.4.22/     embedded EcsLite source (own asmdef Leopotam.EcsLite)
 Editor/DragonColorBlockBlockingBaker.cs   menu "Tools/Blocks/Bake Blocking Blocks (All)"
+Editor/BlockMechanicsTools.cs             menu "Tools/Blocks/Mechanics/*" (add mechanics, rebuild views, validate)
 Plugins/DOTween, Resources/DOTweenSettings.asset, TextMesh Pro, Epic Toon FX, AnimationBaker,
 MeshCombiner, LanguageSupport   third-party / tooling (several are excluded from the Luna build in luna.json)
 SVC_Luna.asset                Luna settings asset

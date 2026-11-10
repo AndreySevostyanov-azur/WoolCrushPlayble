@@ -1,3 +1,4 @@
+using Leopotam.EcsLite;
 using Playeble.Scripts.Gameplay.Dragon;
 using UnityEngine;
 
@@ -36,6 +37,7 @@ namespace Playeble.Scripts.Gameplay.Movements
         public Vector3 P5;
 
         public Vector3 CachedBlockerPoint;
+        public EcsPackedEntity Blocker;
     }
 }
 

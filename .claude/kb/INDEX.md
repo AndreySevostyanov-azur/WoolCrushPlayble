@@ -12,6 +12,7 @@ symbols against current code before relying on them (`Last verified:` at the top
 | [03-luna-and-scenes.md](03-luna-and-scenes.md) | Luna integration, template scripts, `luna.json`, scene setup and per-scene tuning, editor tool | Touching scenes, Luna settings, export, tutorial finger, end screen |
 | [04-glossary.md](04-glossary.md) | Domain vocabulary (block, spool, reel slot, scale, wind, rebuke) | Unsure what a term means |
 | [05-workflows.md](05-workflows.md) | Verify/run/export, git conventions, definition of done | Before verifying or committing |
+| [06-new-block-mechanics.md](06-new-block-mechanics.md) | Ice / Chain / Hidden block mechanics: how they work in the original project (with sources), mapping to the playable, implementation notes, what is unverified | Touching Ice/Chain/Hidden blocks, `Scripts/Gameplay/Mechanics/`, `BlockMechanicsConfig` |
 | [UPDATELOG.md](UPDATELOG.md) | Append-only log of KB changes | After any task that changed architecture, patterns or paths |
 
 ## Protocol (summary - full version in root `AGENTS.md`)

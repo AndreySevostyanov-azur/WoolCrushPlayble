@@ -1,6 +1,7 @@
 using AzurGames.Wool.Gameplay;
 using Leopotam.EcsLite;
 using Playeble.Scripts.Gameplay.Dragon;
+using Playeble.Scripts.Gameplay.Mechanics;
 using Playeble.Scripts.Gameplay.ReelSlots;
 using Playeble.Scripts.Gameplay.Selection;
 using UnityEngine;
@@ -163,15 +164,41 @@ namespace Playeble.Scripts.Gameplay.Movements
                     forward = view.Transform.forward;
                 }
 
+                var mechanics = _ctx != null && _ctx.Mechanics != null && _ctx.Mechanics.HasAny ? _ctx.Mechanics : null;
+                if (mechanics != null)
+                {
+                    if (mechanics.IsFrozen(blockEntity))
+                    {
+                        mechanics.RaiseNudge(blockEntity, true);
+                        continue;
+                    }
+
+                    if (mechanics.ActiveLinks(blockEntity) > 0)
+                    {
+                        mechanics.RaiseNudgeChainGroup(blockEntity);
+                        continue;
+                    }
+                }
+
                 // 1) Check forward blocker first (collision on the way).
                 var blocker = GetForwardBlockerOrBoundary(view, startPos, forward, hasBorders, borders);
                 if (blocker.Found)
                 {
+                    var blockerEntity = FindBlockEntity(blockEntities, blockCount, viewDense, viewSparse, blocker.Block);
+                    if (mechanics != null && mechanics.IsChainBlocker(blockEntity))
+                    {
+                        mechanics.RaiseNudge(blockEntity, true);
+                        mechanics.RaiseNudge(blockerEntity);
+                        mechanics.RaiseStrike(blockerEntity);
+                        continue;
+                    }
+
                     move.MoveType = BlockMoveType.ToBlocker;
                     move.TargetSlotIndex = -1;
                     move.PathIndex = 0;
                     move.PathCount = 0;
                     move.CachedBlockerPoint = blocker.Point;
+                    move.Blocker = blockerEntity >= 0 ? _world.PackEntity(blockerEntity) : default(EcsPackedEntity);
                     moveDense[moveIdx] = move;
                     continue;
                 }
@@ -372,6 +399,7 @@ namespace Playeble.Scripts.Gameplay.Movements
         {
             public bool Found;
             public Vector3 Point;
+            public DragonColorBlock Block;
         }
 
         private BlockerResult GetForwardBlockerOrBoundary(BlockViewRef self, Vector3 startPos, Vector3 forward, bool hasBorders, GameBordersComponent borders)
@@ -462,6 +490,7 @@ namespace Playeble.Scripts.Gameplay.Movements
             if (bestBlock != null)
             {
                 result.Found = true;
+                result.Block = bestBlock;
 
                 // Move straight forward to the collision point (no diagonal to center).
                 if (!TryGetCollisionPointXZ(startPos, forwardXZ, bestBounds, hasSelfBounds, selfBounds, out result.Point))

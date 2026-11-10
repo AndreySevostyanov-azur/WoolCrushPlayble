@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08fd5185a8954f61a71a631841ddf1ae, type: 3}
+  m_Name: BlockMechanicsConfig
+  m_EditorClassIdentifier: 
+  _hiddenMaterial: {fileID: 2100000, guid: df86694b6bc196444a3828187c4219e7, type: 2}
+  _hiddenPulseDuration: 3
+  _hiddenPulseCount: 3
+  _hiddenSolidDuration: 1
+  _hiddenOverlayScale: {x: 1.02, y: 1.01, z: 1.02}
+  _iceMaterial: {fileID: 2100000, guid: 63f00423e7383734e86477cae9a11a11, type: 2}
+  _iceMeshes:
+  - Source: {fileID: 7274775735389243974, guid: 195762bd8cb302748ad09cf43a4f2bea, type: 3}
+    Ice: {fileID: -6698368768759098753, guid: 677960b28c1bc5544948144553cc1542, type: 3}
+  - Source: {fileID: -6554130798479478117, guid: 137046b41c7ab8843a8c1c3d8198b68f, type: 3}
+    Ice: {fileID: -2848652771799606078, guid: 8177a2a4d4fdb09469f85852f84f14dd, type: 3}
+  - Source: {fileID: -8990423669726771287, guid: fc7a2e055a37a2d4ca1914fe80368da1, type: 3}
+    Ice: {fileID: -1233070879811483780, guid: 7dbf820a019da0f4280f4d02d966c1d2, type: 3}
+  _iceLocalEuler: {x: 0, y: 180, z: 0}
+  _meltDuration: 0.5
+  _unfreezeVfx: {fileID: 4597106198244764267, guid: ce54f53ade3d33140bd37c82575fb940, type: 3}
+  _chainSprite: {fileID: -1090091877, guid: e2bac3d4f4f5c134ea34e267066a0766, type: 3}
+  _lockSprite: {fileID: 1483826936, guid: e2bac3d4f4f5c134ea34e267066a0766, type: 3}
+  _pinSprite: {fileID: -318380934, guid: e2bac3d4f4f5c134ea34e267066a0766, type: 3}
+  _spriteMaterial: {fileID: 2100000, guid: 6d981d7426ac4de880cc54c93c8e1c48, type: 2}
+  _chainScale: 0.19
+  _chainLinkSpacing: 0.9
+  _chainAngleOffset: 0
+  _lockScale: 0.19
+  _pinScale: 0.19
+  _anchorLocalOffset: {x: 0, y: 0.9, z: 0}
+  _sortingOrder: 50
+  _chainBreakVfx: {fileID: 2551494956040147569, guid: e4a98111c61d6b1478c0e520ac522720, type: 3}
+  _lockBreakVfx: {fileID: 2551494956040147569, guid: 8994aef1405fb9b428c8ac9a053a6c7b, type: 3}
+  _nudgeDistance: 0.2
+  _nudgeDuration: 0.1
+  _rejectMarkerPrefab: {fileID: 0}
+  _vfxLifetime: 2

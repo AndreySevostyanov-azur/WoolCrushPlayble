@@ -85,6 +85,7 @@ if YAML must be edited by hand, keep GUIDs/fileIDs intact and run `git diff --ch
 - [`03-luna-and-scenes.md`](.claude/kb/03-luna-and-scenes.md) - Luna integration, template scripts, scenes and tuning, blocking baker
 - [`04-glossary.md`](.claude/kb/04-glossary.md) - domain vocabulary
 - [`05-workflows.md`](.claude/kb/05-workflows.md) - verify, export, git, definition of done
+- [`06-new-block-mechanics.md`](.claude/kb/06-new-block-mechanics.md) - Ice/Chain/Hidden: original behaviour, port plan
 - [`UPDATELOG.md`](.claude/kb/UPDATELOG.md) - KB change log
 
 Other agent config: [`.claude/settings.json`](.claude/settings.json) (hooks that inject the KB reminder), [`.cursor/rules/`](.cursor/rules/) (the same rules for Cursor).

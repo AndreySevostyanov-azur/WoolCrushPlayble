@@ -29,3 +29,9 @@
 | **Playground field** | `[LunaPlaygroundField]` serialized value editable in the Luna web playground. |
 | **GameContext** | Immutable config object handed to every ECS system. |
 | **EcsLite** | Leopotam ECS Lite (`Assets/LeoEcs/ecslite-2025.4.22`). Entities are ints, components are structs, `EcsPool<T>`, `EcsFilter`. |
+| **Hidden block** | Block drawn as a black box until it reaches a slot (`HiddenBlock`, overlay material `Wool_Hidden`). Pure visual. |
+| **Ice / frozen block** | Block that cannot be tapped until another block hits it (`FrozenBlock`, `BlockFrozen`, melt = `BlockMelt`). |
+| **Chain / chained block** | Locked block (`ChainedBlock`) freed by removing all its blocker blocks; one chain per blocker (`ChainLink`), lock on the locked block, pin on each blocker. |
+| **Strike** | A block hitting its blocker in a `ToBlocker` move; `BlockStrikeEvent` melts a frozen blocker. |
+| **Nudge** | Short punch offset of an idle block used as tap/hit feedback (`BlockNudgeSystem`). |
+| **Block mechanics config** | `Assets/!Configs/BlockMechanicsConfig.asset`: materials, meshes, sprites, VFX and timings of the three mechanics. |

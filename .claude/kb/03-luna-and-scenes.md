@@ -73,3 +73,15 @@ Menu `Tools/Blocks/Bake Blocking Blocks (All)` (also a button in the `DragonColo
 
 The runtime (`StartBlockMoveOnClickSystem.GetForwardBlockerOrBoundary`) uses the same forward/lateral rules, so keep both in sync when changing either.
 Re-bake after moving, rotating or adding blocks; stale lists make blocks drive through each other or stop for no reason.
+
+## Block mechanics tooling (`Assets/Editor/BlockMechanicsTools.cs`, 2026-11-09)
+
+Menu `Tools/Blocks/Mechanics/` (details of the mechanics in [06](06-new-block-mechanics.md)):
+
+| Item | What it does |
+|------|--------------|
+| `Add Hidden To Selected`, `Add Ice To Selected`, `Add Chain To Selected` | for every selected object with `DragonColorBlock`: adds `HiddenBlock` / `FrozenBlock` / `ChainedBlock` (Undo-able), assigns `Assets/!Configs/BlockMechanicsConfig.asset` (found by type), builds the `Hidden` / `Ice` child view persistently so it shows in the scene |
+| `Rebuild Views (Scene)` | re-creates missing overlay views for all blocks that have the components |
+| `Validate (Scene)` | errors for: frozen block that no block lists in `BlockingBlocks` (nothing can hit it), empty/self/duplicate/missing chain blockers, chain cycles (deadlock) |
+
+Level workflow for a scene: place blocks, bake blocking blocks (above), select blocks -> add mechanics, for chains fill `ChainedBlock._blockers` (gizmos show the links), run `Validate`, save the scene. A scene with none of the components behaves exactly as before.

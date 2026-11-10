@@ -1,6 +1,6 @@
 # 02 - Gameplay (LeoECS Lite)
 
-`Last verified: 2026-11-09` (all files under `Assets/Scripts/` read; runtime behaviour was **not** run in the Editor, statements about "what happens" come from reading code).
+`Last verified: 2026-11-09` (all files under `Assets/Scripts/` read, mechanics added the same day; runtime behaviour was **not** run in the Editor, statements about "what happens" come from reading code).
 
 ## Composition root: `GameBootstrap` (`Assets/Scripts/GameBootstrap.cs`)
 
@@ -49,28 +49,34 @@ Body segment count = sum of `Turns` over all blocks (`_dragonBodySegmentsCount` 
 | 1 | `DragonSpawnInitSystem` | Init | Instantiates the head (`DragonHeadView` prefab) as an entity with `TransformRef, DragonPart, SplinePathRef, DragonHeadMove, DragonSpawnProgress, DragonHeadComponent` |
 | 2 | `ComputeGameBordersInitSystem` | Init | AABB over all block colliders (+ `FieldBordersOffset`) -> one `GameBordersComponent` entity |
 | 3 | `BlocksInitSystem` | Init | One entity per `DragonColorBlock`: `BlockViewRef` + `BlockMoveData` |
-| 4 | `DragonVariableAccelerationSystem` | Run | Head `Speed` = `settings.EvaluateSpeed(BaseSpeed, Distance, PathLength)`; no settings asset -> constant speed + one warning |
-| 5 | `DragonMoveAlongPathSystem` | Run | Advances head, applies rebuke shifts, positions followers, raises `DragonReachedEndEvent` |
-| 6 | `DragonGrowSpawnSystem` | Run | Spawns body scales progressively (max 1 per frame) and finally the tail |
-| 7 | `DragonGameEndSystem` | Run | Win/lose detection -> `LifeCycle.GameEnded()` + `ctx.RiseGameEndAction()` |
-| 8 | `DragonEventCleanupSystem` | Run | Deletes every `DragonReachedEndEvent` entity |
-| 9 | `ReelSlotsInitSystem` | Init | One entity per `SlotView`: `ReelSlotViewRef` + `ReelSlotState{Empty}`; resets slot UI |
-| 10 | `StartBlockMoveOnClickSystem` | Run | `BlockClickedEvent` -> chooses `BlockMoveType` for the block |
-| 11 | `BlockPathMoveSystem` | Run | Moves blocks; on slot arrival emits `BlockArrivedToSlotEvent` and destroys the block |
-| 12 | `AssignReelToFirstEmptySlotSystem` | Run | `BlockArrivedToSlotEvent` -> slot becomes `Occupied` with spool data/colour |
-| 13 | `DragonAnimationSystem` | Run | Periodic fire-breath on the head (`Fire_On` animator bool) |
-| 14 | `ReelWindSystem` | Run | Occupied spool unwinds matching dragon scales one by one; emits `DragonRebukeRequestEvent` |
-| 15 | `ReelSlotSyncViewSystem` | Run | Pushes slot state to `SlotView` (spool visual, coils, counter, rope) |
-| 16 | `BlockClickEventCleanupSystem` | Run | Deletes every `BlockClickedEvent` entity |
+| 4 | `BlockMechanicsInitSystem` | Init | Builds `BlockMechanicsState` (put on `GameContext.Mechanics`), block->entity map, `BlockHidden/BlockFrozen` tags, chain links; creates missing overlay views. See [06](06-new-block-mechanics.md) |
+| 5 | `DragonVariableAccelerationSystem` | Run | Head `Speed` = `settings.EvaluateSpeed(BaseSpeed, Distance, PathLength)`; no settings asset -> constant speed + one warning |
+| 6 | `DragonMoveAlongPathSystem` | Run | Advances head, applies rebuke shifts, positions followers, raises `DragonReachedEndEvent` |
+| 7 | `DragonGrowSpawnSystem` | Run | Spawns body scales progressively (max 1 per frame) and finally the tail |
+| 8 | `DragonGameEndSystem` | Run | Win/lose detection -> `LifeCycle.GameEnded()` + `ctx.RiseGameEndAction()` |
+| 9 | `DragonEventCleanupSystem` | Run | Deletes every `DragonReachedEndEvent` entity |
+| 10 | `ReelSlotsInitSystem` | Init | One entity per `SlotView`: `ReelSlotViewRef` + `ReelSlotState{Empty}`; resets slot UI |
+| 11 | `StartBlockMoveOnClickSystem` | Run | `BlockClickedEvent` -> rejects frozen/chained taps (nudge events), else chooses `BlockMoveType` for the block |
+| 12 | `BlockPathMoveSystem` | Run | Moves blocks; on slot arrival emits `BlockArrivedToSlotEvent` and destroys the block; on contact with a blocker raises nudge + strike events |
+| 13 | `BlockFrozenSystem` | Run | Consumes `BlockStrikeEvent`: starts melt (VFX, ice alpha fade), removes `BlockFrozen` |
+| 14 | `BlockChainSystem` | Run | Breaks a chain link when its blocker block starts `ToSlot`; updates lock/pin/chain visuals every frame |
+| 15 | `BlockNudgeSystem` | Run | Consumes `BlockNudgeEvent`: short punch offset of an idle block (+ optional reject marker) |
+| 16 | `BlockHiddenSystem` | Run | Calls `BlockMechanicsState.TickHidden` (pulse/solid animation of the hidden overlay material). While the game is paused (start screen / tutorial) `GameBootstrap.Update` calls the same `TickHidden` itself, so the animation never stops |
+| 17 | `AssignReelToFirstEmptySlotSystem` | Run | `BlockArrivedToSlotEvent` -> slot becomes `Occupied` with spool data/colour |
+| 18 | `DragonAnimationSystem` | Run | Periodic fire-breath on the head (`Fire_On` animator bool) |
+| 19 | `ReelWindSystem` | Run | Occupied spool unwinds matching dragon scales one by one; emits `DragonRebukeRequestEvent` |
+| 20 | `ReelSlotSyncViewSystem` | Run | Pushes slot state to `SlotView` (spool visual, coils, counter, rope) |
+| 21 | `BlockClickEventCleanupSystem` | Run | Deletes every `BlockClickedEvent` entity |
 
 Order dependencies worth knowing before touching the list:
 
-- Click events created in `Update` by `ClickRaycastToEcsEvent` are consumed by #10 and deleted by #16 in the same `Run`.
-- `DragonReachedEndEvent` is created by #5, read by #7, deleted by #8 - all before #13. `DragonAnimationSystem` checks
+- Click events created in `Update` by `ClickRaycastToEcsEvent` are consumed by #11 and deleted by #21 in the same `Run`.
+- `DragonReachedEndEvent` is created by #6, read by #8, deleted by #9 - all before #18. `DragonAnimationSystem` checks
   `_reachedFilter` (that event) to force the breathing state, but by the time it runs the event is already deleted, so that
-  branch looks unreachable in the current order (read from code; not observed at runtime). The game ends in #7 the same frame anyway.
-- `BlockArrivedToSlotEvent` (#11) is consumed by #12 in the same frame; #14 sees the slot as `Occupied` from the next system on.
-- `DragonRebukeRequestEvent` is created by #14 and consumed by #5 on the **next** frame (it is earlier in the list).
+  branch looks unreachable in the current order (read from code; not observed at runtime). The game ends in #8 the same frame anyway.
+- `BlockArrivedToSlotEvent` (#12) is consumed by #17 in the same frame; #19 sees the slot as `Occupied` from the next system on.
+- `DragonRebukeRequestEvent` is created by #19 and consumed by #6 on the **next** frame (it is earlier in the list).
+- Mechanics events (`BlockNudgeEvent`, `BlockStrikeEvent`) are raised by #11/#12 and consumed by #13/#15 in the same frame, so every one is handled before the frame ends; `BlockChainSystem` (#14) polls `BlockMoveData.MoveType == ToSlot`, which #11 sets in the same frame.
 
 ## Components (all `struct`)
 
@@ -90,7 +96,7 @@ Order dependencies worth knowing before touching the list:
 | `DragonReachedEndEvent` | same | empty tag event |
 | `DragonBreathComponent` | `Dragon/DragonBreathComponent.cs` | `Time`, `DragonBreathState State (Idle/Breathing)` on a separate entity |
 | `BlockViewRef` | `Movements/BlockMoveComponents.cs` | `DragonColorBlock Block, Transform, Collider, Vector3 OriginPosition` |
-| `BlockMoveData` | same | `BlockMoveType MoveType (None/ToSlot/ToBlocker/ToOrigin)`, `TargetSlotIndex`, `PathIndex/PathCount`, waypoints `P0..P5`, `CachedBlockerPoint` |
+| `BlockMoveData` | same | `BlockMoveType MoveType (None/ToSlot/ToBlocker/ToOrigin)`, `TargetSlotIndex`, `PathIndex/PathCount`, waypoints `P0..P5`, `CachedBlockerPoint`, packed `Blocker` (the block a `ToBlocker` move will hit; default = none) |
 | `BlockArrivedToSlotEvent` | `Movements/BlockArrivedToSlotEvent.cs` | `SlotIndex, Turns, BoxType, Color, ColorOffset` |
 | `GameBordersComponent` | `Movements/GameBordersComponent.cs` | `Center, Extents` of the field |
 | `BlockClickedEvent` | `Selection/BlockClickedEvent.cs` | `ClickableBlockView Block, HitPoint, HitNormal` |
@@ -100,6 +106,14 @@ Order dependencies worth knowing before touching the list:
 | `ReelSpoolColor` | same | `Colors Color`, `ColorOffset` |
 | `ReelSlotAssignedBlock` | same | block that reserved this slot while moving to it |
 | `ReelWindState` | same | `TargetEntity` (scale being unwound), `Progress01`, `DisposeTimer` |
+| `BlockHidden` | `Mechanics/MechanicsComponents.cs` | instanced overlay `Material`, `HiddenPhase` (None/PulseUp/PulseDown/Solid/Finished), timers |
+| `BlockFrozen` | same | ice `MeshRenderer`, VFX point; presence = block is frozen |
+| `BlockMelt` | same | ice view + material + elapsed/duration while the ice fades out |
+| `BlockChained` | same | `ActiveLinks` left on a locked block + its lock `SpriteRenderer` |
+| `BlockChainBlocker` | same | `ActiveLinks` held by a blocker block + its pin `SpriteRenderer` |
+| `ChainLink` | same | one entity per chain: packed target, packed blocker, `ChainVisual` |
+| `BlockNudge` | same | running shake of an idle block (`Offset`, `Time`, `Duration`) |
+| `BlockNudgeEvent` / `BlockStrikeEvent` | same | one-tick events: shake a block (optional reject marker) / hit a block (melts it if frozen) |
 | `EcsUtils` | `Dragon/DragonSpawnInitSystem.cs` | static `SetComponent<T>` helper (not a component) |
 
 ## Flows
@@ -109,8 +123,12 @@ Order dependencies worth knowing before touching the list:
 1. `ClickRaycastToEcsEvent` (`Update`, touch phase `Began` first, else mouse-down) raycasts from `_camera`
    (`Camera.main` fallback), finds `ClickableBlockView` in the hit collider's parents, creates a `BlockClickedEvent` entity in the game world.
 2. `StartBlockMoveOnClickSystem` resolves the `DragonColorBlock` (`GetComponentInParent`), finds its block entity, and ignores the tap unless
-   `MoveType == None`. Decision order:
-   1. blocker ahead (`DragonColorBlock.BlockingBlocks`, forward direction on XZ, within the field borders) -> `ToBlocker` to the collision point;
+   `MoveType == None`. Decision order (steps 0a-0c only when `GameContext.Mechanics.HasAny`, see [06](06-new-block-mechanics.md)):
+   0a. frozen block -> nudge with reject marker, no move;
+   0b. block with active chain links -> nudge the block and every blocker of its chains, no move;
+   0c. (inside step 1) the tapped block is a chain blocker and has a block in front -> it nudges in place together with that block (and strikes it if frozen), no move.
+
+   1. blocker ahead (`DragonColorBlock.BlockingBlocks`, forward direction on XZ, within the field borders) -> `ToBlocker` to the collision point, remembering the blocker in `BlockMoveData.Blocker`; on contact `BlockPathMoveSystem` nudges the hit block and, if it is frozen, strikes it (melt);
    2. block already has a reserved slot (`ReelSlotAssignedBlock`) -> `ToSlot`;
    3. first `Empty` slot (lowest `Index`) -> mark it `Reserved`, add `ReelSlotAssignedBlock`, `ToSlot`;
    4. no free slot -> `ToBlocker` towards the boundary point, then back.

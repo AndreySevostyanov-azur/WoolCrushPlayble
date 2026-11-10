@@ -7,6 +7,7 @@ using Gameplay;
 using Leopotam.EcsLite;
 using Playeble.Scripts.Gameplay;
 using Playeble.Scripts.Gameplay.Dragon;
+using Playeble.Scripts.Gameplay.Mechanics;
 using Playeble.Scripts.Gameplay.Movements;
 using Playeble.Scripts.Gameplay.ReelSlots;
 using Playeble.Scripts.Gameplay.Selection;
@@ -184,6 +185,7 @@ namespace Playeble.Scripts
             BindSystem<Playeble.Scripts.Gameplay.Dragon.DragonSpawnInitSystem>(BindType.Game);
             BindSystem<ComputeGameBordersInitSystem>(BindType.Game);
             BindSystem<BlocksInitSystem>(BindType.Game);
+            BindSystem<BlockMechanicsInitSystem>(BindType.Game);
             BindSystem<Playeble.Scripts.Gameplay.Dragon.DragonVariableAccelerationSystem>(BindType.Game);
             BindSystem<Playeble.Scripts.Gameplay.Dragon.DragonMoveAlongPathSystem>(BindType.Game);
             BindSystem<Playeble.Scripts.Gameplay.Dragon.DragonGrowSpawnSystem>(BindType.Game);
@@ -192,6 +194,10 @@ namespace Playeble.Scripts
             BindSystem<ReelSlotsInitSystem>(BindType.Game);
             BindSystem<StartBlockMoveOnClickSystem>(BindType.Game);
             BindSystem<BlockPathMoveSystem>(BindType.Game);
+            BindSystem<BlockFrozenSystem>(BindType.Game);
+            BindSystem<BlockChainSystem>(BindType.Game);
+            BindSystem<BlockNudgeSystem>(BindType.Game);
+            BindSystem<BlockHiddenSystem>(BindType.Game);
             BindSystem<AssignReelToFirstEmptySlotSystem>(BindType.Game);
             BindSystem<DragonAnimationSystem>(BindType.Game);
             BindSystem<ReelWindSystem>(BindType.Game);
@@ -434,6 +440,10 @@ namespace Playeble.Scripts
                     _gameplaySystems?.Run();
                     _collisionSystems?.Run();
                 }
+            }
+            else if (_gameContext != null && _gameContext.Mechanics != null)
+            {
+                _gameContext.Mechanics.TickHidden(Time.deltaTime);
             }
 
             _time += Time.deltaTime;
