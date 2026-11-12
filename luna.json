@@ -1,7 +1,7 @@
 {
     "version": "7.1.0",
     "projectId": "7e8230cc-65de-4aba-8d6c-64c69b51c8cd",
-    "applicationID": 44235,
+    "applicationID": 0,
     "creativeName": "WQ_Playable_3",
     "pgServer": "EU",
     "window": {
@@ -92,7 +92,7 @@
                 "Stubs/SupersonicWisdom/"
             ],
             "msbuildMac64": "/Library/Frameworks/Mono.framework/Versions/Current/bin/msbuild",
-            "msbuildWin64": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\MSBuild\\Current\\Bin\\MSBuild.exe",
+            "msbuildWin64": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
             "externalSources": [
                 "./Library/PackageCache/com.azur-marketing.audio@cdedcd7c5665",
                 "./Library/PackageCache/com.azur-marketing.ctabutton@4dc3e2d133d2",
@@ -120,7 +120,7 @@
             "externalJSLibraries": [],
             "scriptingDefines": [],
             "msbuildVersion": "17.4",
-            "monoVersion": "9.0.22",
+            "monoVersion": "8.0.21",
             "dotnetVersion": "8.0.206"
         },
         "assets": {
