@@ -20,5 +20,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Playable/Scenes/Playable_5.unity
     guid: 67a68559d3f4a7f47beb195f3098c2c8
+  - enabled: 1
+    path: Assets/Playable/Scenes/Playable_Ice_1.unity
+    guid: cab09999f8e121a45a95c37101bd457c
+  - enabled: 1
+    path: Assets/Playable/Scenes/Playable_Chain_Ice_2.unity
+    guid: c402ba200f4174c4b981db2c6879ab80
+  - enabled: 1
+    path: Assets/Playable/Scenes/Playable_Chain_Hidden_1.unity
+    guid: bf9e3a104be2641468529006490c042a
+  - enabled: 1
+    path: Assets/Playable/Scenes/Playable_Chain_3.unity
+    guid: 28220e741287b494aa29991d62151015
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
